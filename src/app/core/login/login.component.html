@@ -1,0 +1,22 @@
+<div class="login__body">
+<header class="login__header">
+  <h1 class="login__header-title">
+    Dental CRM
+  </h1>
+</header>
+
+<main class="login__main">
+  <h1 class="title">
+    Login Form
+  </h1>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="form">
+    <app-control *ngFor="let control of this.controls" [control]="control" [form]="form"></app-control>
+    <a href="" class="forgot-link">
+      <img src="./assets/icons/sidebar/toggle.svg" alt="">
+      Forgot password
+    </a>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Login</button>
+  </form>
+</main>
+</div>
+

@@ -1,0 +1,3 @@
+<ng-container [ngSwitch]="control.controlType">
+  <app-control-input *ngSwitchCase="'input'" [form]="form" [control]="control"></app-control-input>
+</ng-container>
