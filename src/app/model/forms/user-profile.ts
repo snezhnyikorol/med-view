@@ -3,17 +3,43 @@ import {ControlInputModel} from '@model/controls/control-input-model';
 
 export const userProfileMetadata: ControlBaseModel<string>[] = [
   new ControlInputModel({
-    key: 'firstName',
+    key: 'first_name',
     label: 'First name',
     value: 'Bombasto',
     required: true,
+    order: 2
+  }),
+
+  new ControlInputModel({
+    key: 'last_name',
+    label: 'Last name',
+    value: 'Bombasto',
+    required: true,
+    order: 3
+  }),
+
+  new ControlInputModel({
+    key: 'email',
+    label: 'Email',
+    type: 'email',
+    order: 4
+  }),
+
+  new ControlInputModel({
+    key: 'login',
+    label: 'Login',
     order: 1
   }),
 
   new ControlInputModel({
-    key: 'emailAddress',
-    label: 'Email',
-    type: 'email',
-    order: 2
+    key: 'phone',
+    label: 'Phone',
+    order: 5
+  }),
+
+  new ControlInputModel({
+    key: 'birthday',
+    label: 'Birthday',
+    order: 6
   })
 ];

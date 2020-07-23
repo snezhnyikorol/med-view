@@ -9,20 +9,23 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  auth(credentials) {
-    return this.http.post('/dev/sign-in', credentials);
-  }
-
-  getUsers(page) {
-    const headers = new HttpHeaders({Authentication: localStorage.getItem('token')});
+  getUsers() {
     // const params = new HttpParams({page: '1'});
     // params.set('page', String(page));
 
-    return this.http.get('/dev/users', {headers});
+    return this.http.get('/dev/users');
+  }
+
+  getUser(id) {
+    return this.http.get(`/dev/user/${id}`);
+  }
+
+  addUser(data) {
+    return this.http.post('dev/users', data);
   }
 
   getMe() {
-    const headers = new HttpHeaders({Authentication: localStorage.getItem('token')});
-    return this.http.get('/dev/me', {headers});
+    // const headers = new HttpHeaders({Authentication: localStorage.getItem('token')});
+    return this.http.get('/dev/me');
   }
 }
