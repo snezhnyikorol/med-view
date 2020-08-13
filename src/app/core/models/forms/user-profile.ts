@@ -1,5 +1,5 @@
-import {ControlBaseModel} from '@model/controls/control-base-model';
-import {ControlInputModel} from '@model/controls/control-input-model';
+import {ControlBaseModel} from '../controls/control-base-model';
+import {ControlInputModel} from '../controls/control-input-model';
 
 export const userProfileMetadata: ControlBaseModel<string>[] = [
   new ControlInputModel({

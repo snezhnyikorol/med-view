@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpRequest} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {NgxPermissionsService} from 'ngx-permissions';
-import {userProfileMetadata} from '@model/forms/user-profile';
+import {userProfileMetadata} from '@model/../../models/forms/user-profile';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {User} from '@model/user';
+import {User} from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,9 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  constructor(private http: HttpClient, private router: Router, private permissionsService: NgxPermissionsService) {
+  constructor(private http: HttpClient,
+              private router: Router,
+              private permissionsService: NgxPermissionsService) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -25,13 +27,13 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-
-  login(credentials) {
+  public login(credentials) {
+    console.log('cred:', credentials);
     this.http.post('/dev/sign-in', credentials)
       .subscribe(
-        (res: any) => {
+        (res: {success: boolean, data: {expires: number, token: string, user: User}}) => {
           localStorage.setItem('token', res.data.token);
-          localStorage.setItem('expires', res.data.expires);
+          localStorage.setItem('expires', res.data.expires.toString());
           this.http.get('/dev/me').subscribe((resp: any) => {
             localStorage.setItem('user', JSON.stringify(resp.data));
             this.currentUserSubject.next(resp.data);
@@ -54,7 +56,7 @@ export class AuthService {
   }
 
   public getToken(): string {
-    return  localStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   tokenExpired() {
@@ -67,6 +69,14 @@ export class AuthService {
 
     return token != null && !this.tokenExpired();
   }
+
+  /*public refreshToken() {
+    return this.http.post<any>(`${config.apiUrl}/refresh`, {
+      'refreshToken': this.getRefreshToken()
+    }).pipe(tap((tokens: Tokens) => {
+      this.storeJwtToken(tokens.jwt);
+    }));
+  }*/
 
   public collectFailedRequests(request): void {
     this.cachedRequests.push(request);

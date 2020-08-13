@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService} from '../http.service';
-import {ControlBaseModel} from '@model/controls/control-base-model';
-import {ControlInputModel} from '@model/controls/control-input-model';
+import {HttpService} from '../../services/http.service';
+import {ControlBaseModel} from '@model/../../models/controls/control-base-model';
+import {ControlInputModel} from '@model/../../models/controls/control-input-model';
 import {FormGroup} from '@angular/forms';
-import {FormControlService} from '../form-control.service';
+import {FormControlService} from '../../services/form-control.service';
 import {Router} from '@angular/router';
-import {userProfileMetadata} from '@model/forms/user-profile';
-import {AuthService} from '../auth/auth.service';
+import {userProfileMetadata} from '@model/../../models/forms/user-profile';
+import {AuthService} from '../../auth/auth.service';
 import {NgxPermissionsService} from 'ngx-permissions';
 
 @Component({

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from './core/login/login.component';
-import {ProfileFormComponent} from './core/profile-form/profile-form.component';
+import {LoginComponent} from './core/components/login/login.component';
+import {ProfileFormComponent} from './core/components/profile-form/profile-form.component';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 import {TestComponent} from './core/test/test.component';
-import {AuthorizedContainerComponent} from './core/authorized-container/authorized-container.component';
+import {AuthorizedContainerComponent} from './core/components/authorized-container/authorized-container.component';
 import {AuthGuard} from './core/auth/auth.guard';
 
 

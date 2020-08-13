@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ControlBaseModel} from '@model/controls/control-base-model';
+import {ControlBaseModel} from '@model/../models/controls/control-base-model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Injectable({

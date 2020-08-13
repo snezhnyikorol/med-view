@@ -5,9 +5,9 @@ import { APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CoreModule} from './core/core.module';
-import {NgxPermissionsModule, NgxPermissionsService} from 'ngx-permissions';
-import {AuthService} from './core/auth/auth.service';
-import {ComponentsModule} from '@shared/components/components.module';
+import {NgxPermissionsModule} from 'ngx-permissions';
+import {ComponentsModule} from './shared/components/components.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import {ComponentsModule} from '@shared/components/components.module';
     CoreModule,
     AppRoutingModule,
     NgxPermissionsModule.forRoot(),
-    ComponentsModule
+    ComponentsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

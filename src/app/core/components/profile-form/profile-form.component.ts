@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ControlBaseModel} from '@model/controls/control-base-model';
+import {ControlBaseModel} from '@model/../../models/controls/control-base-model';
 import {FormGroup} from '@angular/forms';
-import {FormControlService} from '../form-control.service';
+import {FormControlService} from '../../services/form-control.service';
 import {ActivatedRoute} from '@angular/router';
-import {HttpService} from '../http.service';
+import {HttpService} from '../../services/http.service';
 
 @Component({
   selector: 'app-profile-form',
