@@ -221,7 +221,7 @@ input {
   height: 1px;
 }
 
-.tab-content>div:not(#calendar) {
+.tab-content>#details, .tab-content>#records {
   padding: 20px;
 }
 

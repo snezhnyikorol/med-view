@@ -20,11 +20,12 @@ import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeRowComponent } from './components/employees/employee-row/employee-row.component';
 import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
+import { PatientComponent } from './components/patient/patient.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, ProfileFormComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent, PatientsComponent, PatientRowComponent, AddPatientComponent, EmployeesComponent, EmployeeRowComponent, AddEmployeeComponent],
+  declarations: [LoginComponent, ProfileFormComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent, PatientsComponent, PatientRowComponent, AddPatientComponent, EmployeesComponent, EmployeeRowComponent, AddEmployeeComponent, PatientComponent],
     exports: [
         LoginComponent,
         ProfileFormComponent

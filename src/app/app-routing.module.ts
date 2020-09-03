@@ -8,6 +8,7 @@ import {AuthorizedContainerComponent} from './core/components/authorized-contain
 import {AuthGuard} from './core/auth/auth.guard';
 import {PatientsComponent} from './core/components/patients/patients.component';
 import {EmployeesComponent} from './core/components/employees/employees.component';
+import {PatientComponent} from "./core/components/patient/patient.component";
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     component: AuthorizedContainerComponent,
     children: [
       {
@@ -43,6 +44,10 @@ const routes: Routes = [
         component: EmployeesComponent,
 
       },
+      {
+        path: 'patient/:id',
+        component: PatientComponent
+      }
     ]
   },
   {

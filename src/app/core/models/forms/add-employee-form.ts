@@ -54,7 +54,8 @@ export const addEmployeeFormMetadata: FormBaseModel = {
           label: 'First name',
           value: '',
           required: true,
-          order: 1
+          order: 1,
+          width: 6,
         }),
 
         new ControlInputModel({
@@ -62,7 +63,8 @@ export const addEmployeeFormMetadata: FormBaseModel = {
           label: 'Middle name',
           value: '',
           required: true,
-          order: 2
+          order: 2,
+          width: 6,
         }),
 
         new ControlInputModel({
@@ -70,7 +72,8 @@ export const addEmployeeFormMetadata: FormBaseModel = {
           label: 'Last name',
           value: '',
           required: true,
-          order: 2
+          order: 2,
+          width: 6,
         }),
       ]
     },

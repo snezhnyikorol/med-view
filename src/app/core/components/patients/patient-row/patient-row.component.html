@@ -7,7 +7,7 @@
   <td>
     <div class="report__user">
       <img class="report__avatar" src="{{user.photo}}" alt="">
-      <p class="report__name">{{getFullName(user.firstName, user.middleName, user.lastName)}}</p>
+      <a routerLink="{{'../patient/' + user.id}}" class="report__name">{{getFullName(user.firstName, user.middleName, user.lastName)}}</a>
     </div>
   </td>
   <td>{{user.gender}}</td>
