@@ -1,0 +1,17 @@
+<td>
+  <div class="custom-checkbox">
+    <input type="checkbox" class="custom-checkbox__input" id="{{user.id}}">
+    <label for="{{user.id}}" class="custom-checkbox__label"></label>
+  </div>
+</td>
+<td>
+  <div class="report__user">
+    <img class="report__avatar" src="{{user.photo}}" alt="">
+    <p class="report__name">{{getFullName(user.firstName, user.middleName, user.lastName)}}</p>
+  </div>
+</td>
+<td>{{user.gender}}</td>
+<td>{{user.contact.email[0]}}</td>
+<td>{{user.contact.phone[0]}}</td>
+<td>5 Minutes ago</td>
+

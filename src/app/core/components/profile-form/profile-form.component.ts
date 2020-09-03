@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ControlBaseModel} from '@model/../../models/controls/control-base-model';
+import {ControlBaseModel} from '@models/controls/control-base-model';
 import {FormGroup} from '@angular/forms';
 import {FormControlService} from '../../services/form-control.service';
 import {ActivatedRoute} from '@angular/router';

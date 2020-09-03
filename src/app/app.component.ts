@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {userProfileMetadata} from '@model/models/forms/user-profile';
+import {userProfileMetadata} from '@models/forms/user-profile';
 
 @Component({
   selector: 'app-root',

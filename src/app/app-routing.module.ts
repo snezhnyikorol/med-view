@@ -6,6 +6,8 @@ import {NgxPermissionsGuard} from 'ngx-permissions';
 import {TestComponent} from './core/test/test.component';
 import {AuthorizedContainerComponent} from './core/components/authorized-container/authorized-container.component';
 import {AuthGuard} from './core/auth/auth.guard';
+import {PatientsComponent} from './core/components/patients/patients.component';
+import {EmployeesComponent} from './core/components/employees/employees.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,16 @@ const routes: Routes = [
             only: 'admin'
           }
         }
+      },
+      {
+        path: 'patients',
+        component: PatientsComponent,
+
+      },
+      {
+        path: 'employees',
+        component: EmployeesComponent,
+
       },
     ]
   },

@@ -12,11 +12,19 @@ import { AuthorizedContainerComponent } from './components/authorized-container/
 import {ComponentsModule} from '../shared/components/components.module';
 import {RouterModule} from '@angular/router';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { PatientsComponent } from './components/patients/patients.component';
+import { PatientRowComponent } from './components/patients/patient-row/patient-row.component';
+import {SharedModule} from '@shared/shared.module';
+import { AddPatientComponent } from './components/patients/add-patient/add-patient.component';
+import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
+import { EmployeesComponent } from './components/employees/employees.component';
+import { EmployeeRowComponent } from './components/employees/employee-row/employee-row.component';
+import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, ProfileFormComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent],
+  declarations: [LoginComponent, ProfileFormComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent, PatientsComponent, PatientRowComponent, AddPatientComponent, EmployeesComponent, EmployeeRowComponent, AddEmployeeComponent],
     exports: [
         LoginComponent,
         ProfileFormComponent
@@ -27,7 +35,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     ReactiveFormsModule,
     ControlsModule,
     ComponentsModule,
-    RouterModule
+    RouterModule,
+    NgbNavModule
   ],
   providers: [
     {

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ControlInputModel} from '@model/../../../../models/controls/control-input-model';
+import {ControlInputModel} from '@models/controls/control-input-model';
 import {FormGroup} from '@angular/forms';
 
 @Component({

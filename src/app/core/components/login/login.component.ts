@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../../services/http.service';
-import {ControlBaseModel} from '@model/../../models/controls/control-base-model';
-import {ControlInputModel} from '@model/../../models/controls/control-input-model';
+import {ControlBaseModel} from '@models/controls/control-base-model';
+import {ControlInputModel} from '@models/controls/control-input-model';
 import {FormGroup} from '@angular/forms';
 import {FormControlService} from '../../services/form-control.service';
 import {Router} from '@angular/router';
-import {userProfileMetadata} from '@model/../../models/forms/user-profile';
+import {userProfileMetadata} from '@models/forms/user-profile';
 import {AuthService} from '../../auth/auth.service';
 import {NgxPermissionsService} from 'ngx-permissions';
 

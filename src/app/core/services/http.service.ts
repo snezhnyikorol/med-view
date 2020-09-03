@@ -10,10 +10,10 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
-    // const params = new HttpParams({page: '1'});
+    // const params = new HttpParams({"page": 1});
     // params.set('page', String(page));
 
-    return this.http.get('/dev/users');
+    // return this.http.get('/dev/users');
   }
 
   getUser(id) {

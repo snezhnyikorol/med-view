@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpRequest} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {NgxPermissionsService} from 'ngx-permissions';
-import {userProfileMetadata} from '@model/../../models/forms/user-profile';
+import {userProfileMetadata} from '../models/forms/user-profile';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../models/user';
 

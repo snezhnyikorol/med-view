@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {ControlBaseModel} from '@model/../models/controls/control-base-model';
+import {ControlBaseModel} from '@models/controls/control-base-model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBaseModel} from '@models/forms/form-base.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,12 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class FormControlService {
 
   constructor() { }
+
+  toMainFrom(formModel: FormBaseModel) {
+    const form = {};
+    formModel.groups.forEach(el => form[el.name] = this.toFormGroup(el.controls));
+    return new FormGroup(form);
+  }
 
   toFormGroup(controls: ControlBaseModel<string>[]) {
     const group: any = {};

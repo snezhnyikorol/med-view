@@ -1,0 +1,25 @@
+<main class="content-wrapper">
+  <button class="btn btn-primary mb-2" (click)="open()">Add patient</button>
+  <div class="report-wrapper">
+    <table class="report">
+      <thead class="report__header">
+      <tr>
+        <th>
+          <div class="custom-checkbox">
+            <input type="checkbox" class="custom-checkbox__input" id="0">
+            <label for="0" class="custom-checkbox__label"></label>
+          </div>
+        </th>
+        <th><span class="report__header-text">Name</span></th>
+        <th><span class="report__header-text">Gender</span></th>
+        <th><span class="report__header-text">Email</span></th>
+        <th><span class="report__header-text">Phone</span></th>
+        <th><span class="report__header-text">Recent activity</span></th>
+      </tr>
+      </thead>
+      <tbody class="report__body">
+        <tr app-patient-row *ngFor="let user of users" [user]="user"></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
