@@ -23,9 +23,9 @@ export class AddEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.formModel = addEmployeeFormMetadata;
-    this.form = this.fcs.toMainFrom(this.formModel);
+    this.form = this.fcs.toMainFormObj(this.formModel);
     console.log(this.form);
-    this.active = addEmployeeFormMetadata.groups[0].name;
+    this.active = addEmployeeFormMetadata.groups['generalInfo'].name;
   }
 
   onSubmit() {

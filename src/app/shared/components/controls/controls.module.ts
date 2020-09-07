@@ -9,7 +9,8 @@ import { ControlComponent } from './control/control.component';
 @NgModule({
   declarations: [ControlInputComponent, ControlComponent],
   exports: [
-    ControlComponent
+    ControlComponent,
+    ControlInputComponent
   ],
   imports: [
     CommonModule,

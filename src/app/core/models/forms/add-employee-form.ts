@@ -44,67 +44,86 @@ import {FormBaseModel} from '@models/forms/form-base.model';
 // ];
 
 export const addEmployeeFormMetadata: FormBaseModel = {
-  groups: [
-    {
+  groups: {
+    generalInfo: {
       name: 'generalInfo',
       title: 'General info',
-      controls: [
-        new ControlInputModel({
+      controls: {
+        firstName: new ControlInputModel({
           key: 'firstName',
           label: 'First name',
           value: '',
           required: true,
-          order: 1,
-          width: 6,
         }),
 
-        new ControlInputModel({
+        middleName: new ControlInputModel({
           key: 'middleName',
           label: 'Middle name',
           value: '',
           required: true,
-          order: 2,
-          width: 6,
         }),
 
-        new ControlInputModel({
+        lastName: new ControlInputModel({
           key: 'lastName',
           label: 'Last name',
           value: '',
           required: true,
-          order: 2,
-          width: 6,
         }),
-      ]
+
+        gender: new ControlInputModel({
+          key: 'gender',
+          label: 'Gender',
+          value: '',
+          required: true,
+        }),
+
+        birthday: new ControlInputModel({
+          key: 'birthday',
+          label: 'Birthday',
+          value: '',
+          required: true,
+        }),
+
+        maritalStatus: new ControlInputModel({
+          key: 'maritalStatus',
+          label: 'Marital Status',
+          value: '',
+          required: true,
+        }),
+      }
     },
-    {
-      name: 'test',
-      title: 'Test',
-      controls: [
-        new ControlInputModel({
-          key: 'firstName',
-          label: 'First name',
+    jobData: {
+      name: 'jobData',
+      title: 'Job Data',
+      controls: {
+        position: new ControlInputModel({
+          key: 'position',
+          label: 'Position',
           value: '',
           required: true,
-          order: 1
         }),
 
-        new ControlInputModel({
-          key: 'middleName',
-          label: 'Middle name',
+        academicDegree: new ControlInputModel({
+          key: 'academicDegree',
+          label: 'Academic Degree',
           value: '',
           required: true,
-          order: 2
         }),
 
-        new ControlInputModel({
-          key: 'lastName',
-          label: 'Last name',
+        category: new ControlInputModel({
+          key: 'category',
+          label: 'Category',
           value: '',
           required: true,
-          order: 2
         }),
-      ]
+
+        address: new ControlInputModel({
+          key: 'address',
+          label: 'Address',
+          value: '',
+          required: true,
+        }),
+      }
     }
-  ]
+  }
 };

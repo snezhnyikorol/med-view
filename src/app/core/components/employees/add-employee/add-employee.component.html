@@ -7,18 +7,36 @@
 <div class="modal-body">
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
   <div class="d-flex">
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
-      <ng-container *ngFor="let group of formModel.groups">
-        <li ngbNavItem="{{group.name}}">
-          <a ngbNavLink>{{group.title}}</a>
-          <ng-template ngbNavContent formGroupName="{{group.name}}">
-            {{group.title}}
-            <div class="row">
-              <app-control class="{{'col-' + control.width + ' mt-3'}}" *ngFor="let control of group.controls" [control]="control" [form]="form.controls[group.name]"></app-control>
-            </div>
-          </ng-template>
-        </li>
-      </ng-container>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical" style="min-width: 200px">
+<!--      <ng-container *ngFor="let group of formModel.groups">-->
+      <li ngbNavItem="{{formModel.groups['generalInfo'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['generalInfo'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['generalInfo'].name}}">
+          {{formModel.groups['generalInfo'].title}}
+          <div class="row">
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['firstName']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['lastName']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['middleName']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['birthday']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['gender']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['maritalStatus']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+          </div>
+        </ng-template>
+      </li>
+
+      <li ngbNavItem="{{formModel.groups['jobData'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['jobData'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['jobData'].name}}">
+          {{formModel.groups['jobData'].title}}
+          <div class="row">
+            <app-control class="col-6 mt-3" [control]="formModel.groups['jobData'].controls['position']" [form]="form.controls[formModel.groups['jobData'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['jobData'].controls['academicDegree']" [form]="form.controls[formModel.groups['jobData'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['jobData'].controls['category']" [form]="form.controls[formModel.groups['jobData'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['jobData'].controls['degree']" [form]="form.controls[formModel.groups['jobData'].name]"></app-control>
+          </div>
+        </ng-template>
+      </li>
+<!--      </ng-container>-->
     </ul>
     <div [ngbNavOutlet]="nav" class="ml-4"></div>
   </div>

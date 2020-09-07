@@ -10,9 +10,15 @@ export class FormControlService {
 
   constructor() { }
 
+  toMainFormObj(formModel: FormBaseModel) {
+    const form = {};
+    Object.keys(formModel.groups).forEach(key => form[formModel.groups[key].name] = this.toFormGroupObj(formModel.groups[key].controls));
+    return new FormGroup(form);
+  }
+
   toMainFrom(formModel: FormBaseModel) {
     const form = {};
-    formModel.groups.forEach(el => form[el.name] = this.toFormGroup(el.controls));
+    formModel.groups.forEach(el => form[el.name] = this.toFormGroupObj(el.controls));
     return new FormGroup(form);
   }
 
@@ -22,6 +28,16 @@ export class FormControlService {
     controls.forEach(control => {
       group[control.key] = control.required ? new FormControl(control.value || '', Validators.required)
         : new FormControl(control.value || '');
+    });
+
+    return new FormGroup(group);
+  }
+
+  toFormGroupObj(controls) {
+    const group: any = {};
+    Object.keys(controls).forEach(key => {
+      group[key] = controls[key].required ? new FormControl(controls[key].value || '', Validators.required)
+        : new FormControl(controls[key].value || '');
     });
 
     return new FormGroup(group);
