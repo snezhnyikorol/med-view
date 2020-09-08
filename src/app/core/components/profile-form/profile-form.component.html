@@ -1,6 +1,0 @@
-<div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <app-control *ngFor="let control of controls" [control]="control" [form]="form"></app-control>
-    <button type="submit" [disabled]="!form.valid">Save</button>
-  </form>
-</div>

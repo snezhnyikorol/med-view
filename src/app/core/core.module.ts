@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ControlsModule} from '../shared/components/controls/controls.module';
 import {TokenInterceptor} from './auth/token.interceptor';
@@ -21,14 +20,23 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeRowComponent } from './components/employees/employee-row/employee-row.component';
 import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
 import { PatientComponent } from './components/patient/patient.component';
+import {IconsModule} from '@shared/icons/icons.module';
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import bootstrapPlugin from '@fullcalendar/bootstrap';
 
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  bootstrapPlugin
+]);
 
 
 @NgModule({
-  declarations: [LoginComponent, ProfileFormComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent, PatientsComponent, PatientRowComponent, AddPatientComponent, EmployeesComponent, EmployeeRowComponent, AddEmployeeComponent, PatientComponent],
+  // tslint:disable-next-line:max-line-length
+  declarations: [LoginComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent, PatientsComponent, PatientRowComponent, AddPatientComponent, EmployeesComponent, EmployeeRowComponent, AddEmployeeComponent, PatientComponent],
     exports: [
         LoginComponent,
-        ProfileFormComponent
     ],
   imports: [
     CommonModule,
@@ -37,7 +45,9 @@ import { PatientComponent } from './components/patient/patient.component';
     ControlsModule,
     ComponentsModule,
     RouterModule,
-    NgbNavModule
+    NgbNavModule,
+    IconsModule,
+    FullCalendarModule
   ],
   providers: [
     {

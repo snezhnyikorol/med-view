@@ -1,0 +1,615 @@
+///*.content-calendar {*/
+///*    background-color: #fff;*/
+///*    border: 1px solid rgba(224, 225, 235, 0.85);*/
+///*    height: calc(100vh - 80px);*/
+///*    box-shadow: 0 4px 12px 0 rgba(131, 146, 165, 0.15), 2px 2px 5px 0 rgba(60, 70, 83, 0.04); }*/
+///*@media (min-width: 576px) {*/
+///*    .content-calendar {*/
+///*        height: calc(100vh - 98px); } }*/
+//.content-calendar .fc-toolbar.fc-header-toolbar {
+//  height: 55px;
+//  margin-bottom: 0;
+//  display: flex;
+//  justify-content: space-between;
+//  border-bottom: 1px solid rgba(230, 231, 239, 0.85);
+//  padding: 0 15px; }
+//.content-calendar .fc-toolbar .fc-button-group button:first-child {
+//  border-top-left-radius: 0;
+//  border-bottom-left-radius: 0; }
+//.content-calendar .fc-toolbar .fc-button-group button:last-child {
+//  border-top-right-radius: 0;
+//  border-bottom-right-radius: 0; }
+//.content-calendar .fc-toolbar button {
+//  height: 32px;
+//  background-color: #fff;
+//  background-image: none;
+//  border: 1px solid rgba(230, 231, 239, 0.85);
+//  color: rgba(55, 56, 87, 0.7);
+//  box-shadow: none;
+//  padding: 0 15px;
+//  display: flex;
+//  align-items: center;
+//  font-size: 13px;
+//  text-transform: capitalize;
+//  outline: none;
+//  text-shadow: none;
+//  border-radius: 0;
+//  transition: all 0.25s; }
+//@media (prefers-reduced-motion: reduce) {
+//  .content-calendar .fc-toolbar button {
+//    transition: none; } }
+//.content-calendar .fc-toolbar button:hover, .content-calendar .fc-toolbar button:focus {
+//  border-color: #8392a5;
+//  color: #373857;
+//  position: relative;
+//  z-index: 5; }
+//.content-calendar .fc-toolbar button:active {
+//  background-color: #f9f9fd; }
+//.content-calendar .fc-toolbar button.fc-prev-button, .content-calendar .fc-toolbar button.fc-next-button {
+//  padding: 0;
+//  width: 34px;
+//  justify-content: center; }
+//.content-calendar .fc-toolbar button.fc-prev-button span, .content-calendar .fc-toolbar button.fc-next-button span {
+//  margin: 0; }
+//.content-calendar .fc-toolbar button.fc-state-active {
+//  background-color: #f9f9fd;
+//  border-color: #c0ccda;
+//  color: #373857; }
+//.content-calendar .fc-toolbar button.fc-today-button {
+//  border-radius: 0;
+//  color: rgba(55, 56, 87, 0.7);
+//  background-color: #fff;
+//  display: none; }
+//@media (min-width: 768px) {
+//  .content-calendar .fc-toolbar button.fc-today-button {
+//    display: block; } }
+//.content-calendar .fc-toolbar button.fc-today-button:hover, .content-calendar .fc-toolbar button.fc-today-button:focus {
+//  border-color: #8392a5;
+//  color: #373857; }
+//.content-calendar .fc-toolbar button.fc-today-button:active {
+//  background-color: #f9f9fd; }
+//.content-calendar .fc-toolbar button.fc-today-button.fc-state-disabled {
+//  border-color: rgba(230, 231, 239, 0.85);
+//  background-color: #f9f9fd;
+//  color: #575d78;
+//  font-weight: 400;
+//  cursor: default; }
+//@media (max-width: 575px) {
+//  .content-calendar .fc-toolbar button.fc-prev-button, .content-calendar .fc-toolbar button.fc-next-button {
+//    width: 32px;
+//    height: 32px; }
+//  .content-calendar .fc-toolbar button.fc-today-button {
+//    height: 32px;
+//    padding-left: 10px;
+//    padding-right: 10px;
+//    font-size: 11px; }
+//  .content-calendar .fc-toolbar button.fc-month-button, .content-calendar .fc-toolbar button.fc-agendaWeek-button, .content-calendar .fc-toolbar button.fc-agendaDay-button, .content-calendar .fc-toolbar button.fc-listWeek-button, .content-calendar .fc-toolbar button.fc-listMonth-button {
+//    text-indent: -9999px;
+//    width: 32px;
+//    height: 32px;
+//    position: relative;
+//    color: transparent; }
+//  .content-calendar .fc-toolbar button.fc-month-button::before, .content-calendar .fc-toolbar button.fc-agendaWeek-button::before, .content-calendar .fc-toolbar button.fc-agendaDay-button::before, .content-calendar .fc-toolbar button.fc-listWeek-button::before, .content-calendar .fc-toolbar button.fc-listMonth-button::before {
+//    position: absolute;
+//    top: 6px;
+//    left: 10px;
+//    z-index: 100;
+//    display: inline-block;
+//    text-indent: 0;
+//    font-size: 12px;
+//    font-weight: 700;
+//    color: #373857; }
+//  .content-calendar .fc-toolbar button.fc-month-button::before {
+//    content: 'M'; }
+//  .content-calendar .fc-toolbar button.fc-agendaWeek-button::before {
+//    content: 'W'; }
+//  .content-calendar .fc-toolbar button.fc-agendaDay-button::before {
+//    content: 'D'; }
+//  .content-calendar .fc-toolbar button.fc-listWeek-button::before, .content-calendar .fc-toolbar button.fc-listMonth-button::before {
+//    content: 'L';
+//    left: 11px; } }
+//.content-calendar .fc-toolbar .fc-icon-left-single-arrow,
+//.content-calendar .fc-toolbar .fc-icon-right-single-arrow {
+//  top: 0; }
+//.content-calendar .fc-toolbar .fc-icon-left-single-arrow::after,
+//.content-calendar .fc-toolbar .fc-icon-right-single-arrow::after {
+//  font-family: 'Ionicons';
+//  font-size: 16px;
+//  font-weight: 400;
+//  line-height: 1; }
+//@media (min-width: 992px) {
+//  .content-calendar .fc-toolbar .fc-icon-left-single-arrow::after,
+//  .content-calendar .fc-toolbar .fc-icon-right-single-arrow::after {
+//    line-height: .9; } }
+//.content-calendar .fc-toolbar .fc-icon-left-single-arrow::after {
+//  content: '\f3cf'; }
+//.content-calendar .fc-toolbar .fc-icon-right-single-arrow::after {
+//  content: '\f3d1'; }
+//.content-calendar .fc-toolbar .fc-clear {
+//  display: none; }
+//.content-calendar .fc-toolbar .fc-left {
+//  order: 1;
+//  float: none;
+//  display: flex;
+//  align-items: center; }
+//.content-calendar .fc-toolbar .fc-center {
+//  display: flex;
+//  align-items: center;
+//  order: 2; }
+//.content-calendar .fc-toolbar .fc-center h2 {
+//  font-size: 16px;
+//  font-weight: 400;
+//  font-family: "Oswald", sans-serif;
+//  letter-spacing: -.2px; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-toolbar .fc-center h2 {
+//    font-size: 18px; } }
+//@media (min-width: 992px) {
+//  .content-calendar .fc-toolbar .fc-center h2 {
+//    font-size: 20px; } }
+//.content-calendar .fc-toolbar .fc-right {
+//  float: none;
+//  order: 3;
+//  display: none; }
+//@media (min-width: 480px) {
+//  .content-calendar .fc-toolbar .fc-right {
+//    display: flex;
+//    align-items: center; } }
+//.content-calendar .fc-divider {
+//  background-color: #f3f6f9;
+//  border-color: rgba(230, 231, 239, 0.85); }
+//.content-calendar .fc-view-container {
+//  height: calc(100% - 50px); }
+//.content-calendar .fc-head-container {
+//  border-top-width: 0;
+//  border-left-width: 0;
+//  border-right-width: 0; }
+//.content-calendar .fc-head-container .fc-day-header {
+//  padding: 5px 0;
+//  border-color: rgba(230, 231, 239, 0.85);
+//  text-transform: uppercase;
+//  font-size: 12px;
+//  font-weight: 500;
+//  color: #373857; }
+//.content-calendar .fc-widget-content {
+//  border-left-width: 0;
+//  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+//.content-calendar .fc-widget-content:last-child {
+//  border-right-width: 0; }
+//.content-calendar td {
+//  border-color: rgba(230, 231, 239, 0.85); }
+//.content-calendar td.fc-today {
+//  background-color: rgba(243, 246, 249, 0.7); }
+//.content-calendar td.fc-today .fc-day-number, .content-calendar td.fc-today .fc-day-number:hover, .content-calendar td.fc-today .fc-day-number:focus {
+//  background-color: #5556fd;
+//  color: #fff;
+//  border-radius: 1px; }
+//.content-calendar .fc-other-month {
+//  background-color: #fdfdfe; }
+//.content-calendar .fc-day-number {
+//  font-size: 14px;
+//  font-weight: 400;
+//  font-family: "Oswald", sans-serif;
+//  color: #454f5b;
+//  display: inline-block;
+//  padding: 5px 8px;
+//  position: relative;
+//  transition: all 0.25s;
+//  margin: 2px 2px 0 0;
+//  min-width: 20px;
+//  text-align: center; }
+//@media (prefers-reduced-motion: reduce) {
+//  .content-calendar .fc-day-number {
+//    transition: none; } }
+//.content-calendar .fc-day-number:hover, .content-calendar .fc-day-number:focus {
+//  color: #373857;
+//  background-color: #f9f9fd; }
+//.content-calendar .fc-day-top.fc-other-month {
+//  color: rgba(55, 56, 87, 0.6);
+//  opacity: 1; }
+//.content-calendar .fc-event {
+//  border-width: 0;
+//  border-top-width: 5px;
+//  border-radius: 0; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-event {
+//    border-top-width: 0;
+//    border-left-width: 2px;
+//    padding: 3px 4px; } }
+//.content-calendar .fc-event.fc-day-grid-event > div {
+//  display: none;
+//  font-size: 11px; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-event.fc-day-grid-event > div {
+//    display: block; } }
+//.content-calendar .fc-event.fc-day-grid-event > div .fc-time {
+//  font-weight: 500; }
+//.content-calendar .fc-event.fc-day-grid-event > div .fc-desc {
+//  display: none; }
+//.content-calendar .fc-time-grid-event {
+//  padding: 5px;
+//  border-left-width: 0;
+//  border-top-width: 2px; }
+//.content-calendar .fc-time-grid-event .fc-time {
+//  font-size: 12px; }
+//.content-calendar .fc-time-grid-event .fc-title {
+//  font-size: 13px;
+//  font-weight: 500;
+//  color: #212b35;
+//  margin-bottom: 10px; }
+//.content-calendar .fc-time-grid-event .fc-desc {
+//  line-height: 1.3;
+//  color: rgba(33, 43, 53, 0.8); }
+//.content-calendar .fc-agendaWeek-view .fc-time-grid-event > div {
+//  display: none; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-agendaWeek-view .fc-time-grid-event > div {
+//    display: block; } }
+//.content-calendar .fc-agendaWeek-view .fc-time-grid-event > div .fc-time {
+//  font-size: 11px; }
+//.content-calendar .fc-agendaWeek-view .fc-time-grid-event > div .fc-desc {
+//  display: none; }
+//@media (min-width: 992px) {
+//  .content-calendar .fc-agendaWeek-view .fc-time-grid-event > div .fc-desc {
+//    display: block; } }
+//.content-calendar .fc-list-empty {
+//  padding: 20px 0;
+//  background-color: #fdfdfe; }
+//.content-calendar .fc-agenda-view .fc-day-header > a > span {
+//  display: block; }
+//.content-calendar .fc-agenda-view .fc-day-header > a > span:first-child {
+//  color: #575d78;
+//  font-size: 8px;
+//  font-weight: 400;
+//  font-family: "Oswald", sans-serif;
+//  line-height: 1.2; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-agenda-view .fc-day-header > a > span:first-child {
+//    font-size: 11px;
+//    font-weight: 500; } }
+//.content-calendar .fc-agenda-view .fc-day-header > a > span:last-child {
+//  font-weight: 400;
+//  font-size: 14px;
+//  font-family: "Oswald", sans-serif;
+//  line-height: 1; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-agenda-view .fc-day-header > a > span:last-child {
+//    font-size: 25px; } }
+//.content-calendar .fc-agenda-view .fc-day-header.fc-today > a {
+//  color: #5556fd; }
+//.content-calendar .fc-listMonth-view,
+//.content-calendar .fc-listWeek-view {
+//  border-width: 0; }
+//.content-calendar .fc-listMonth-view .fc-scroller,
+//.content-calendar .fc-listWeek-view .fc-scroller {
+//  padding: 20px 20px 20px 0; }
+//.content-calendar .fc-listMonth-view .fc-list-table,
+//.content-calendar .fc-listWeek-view .fc-list-table {
+//  border-collapse: separate;
+//  display: block; }
+//.content-calendar .fc-listMonth-view .fc-list-table > tbody,
+//.content-calendar .fc-listWeek-view .fc-list-table > tbody {
+//  display: flex;
+//  flex-wrap: wrap; }
+//.content-calendar .fc-listMonth-view .fc-list-heading,
+//.content-calendar .fc-listWeek-view .fc-list-heading {
+//  flex: 0 0 20%;
+//  max-width: 20%;
+//  margin-top: 15px;
+//  display: flex;
+//  justify-content: center; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-listMonth-view .fc-list-heading,
+//  .content-calendar .fc-listWeek-view .fc-list-heading {
+//    flex: 0 0 15%;
+//    max-width: 15%; } }
+//@media (min-width: 768px) {
+//  .content-calendar .fc-listMonth-view .fc-list-heading,
+//  .content-calendar .fc-listWeek-view .fc-list-heading {
+//    flex: 0 0 12%;
+//    max-width: 12%; } }
+//@media (min-width: 992px) {
+//  .content-calendar .fc-listMonth-view .fc-list-heading,
+//  .content-calendar .fc-listWeek-view .fc-list-heading {
+//    flex: 0 0 10%;
+//    max-width: 10%; } }
+//@media (min-width: 1200px) {
+//  .content-calendar .fc-listMonth-view .fc-list-heading,
+//  .content-calendar .fc-listWeek-view .fc-list-heading {
+//    flex: 0 0 8%;
+//    max-width: 8%; } }
+//.content-calendar .fc-listMonth-view .fc-list-heading:first-child,
+//.content-calendar .fc-listWeek-view .fc-list-heading:first-child {
+//  margin-top: 0; }
+//.content-calendar .fc-listMonth-view .fc-list-heading:first-child + .fc-list-item,
+//.content-calendar .fc-listWeek-view .fc-list-heading:first-child + .fc-list-item {
+//  margin-top: 0; }
+//.content-calendar .fc-listMonth-view .fc-list-heading td,
+//.content-calendar .fc-listWeek-view .fc-list-heading td {
+//  background-color: transparent;
+//  border-width: 0;
+//  padding: 0; }
+//.content-calendar .fc-listMonth-view .fc-list-heading-main,
+//.content-calendar .fc-listWeek-view .fc-list-heading-main {
+//  display: block;
+//  font-size: 11px;
+//  text-transform: uppercase;
+//  color: #575d78;
+//  font-weight: 500;
+//  padding: 5px;
+//  text-align: center; }
+//.content-calendar .fc-listMonth-view .fc-list-heading-main span:last-child,
+//.content-calendar .fc-listWeek-view .fc-list-heading-main span:last-child {
+//  display: block;
+//  font-size: 28px;
+//  font-weight: 400;
+//  font-family: "Oswald", sans-serif;
+//  letter-spacing: -1.5px;
+//  color: #06072d;
+//  line-height: 1; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-listMonth-view .fc-list-heading-main span:last-child,
+//  .content-calendar .fc-listWeek-view .fc-list-heading-main span:last-child {
+//    font-size: 32px; } }
+//@media (min-width: 1200px) {
+//  .content-calendar .fc-listMonth-view .fc-list-heading-main span:last-child,
+//  .content-calendar .fc-listWeek-view .fc-list-heading-main span:last-child {
+//    font-size: 36px; } }
+//.content-calendar .fc-listMonth-view .fc-list-heading-main.now,
+//.content-calendar .fc-listWeek-view .fc-list-heading-main.now {
+//  color: #5556fd; }
+//.content-calendar .fc-listMonth-view .fc-list-heading-main.now span:last-child,
+//.content-calendar .fc-listWeek-view .fc-list-heading-main.now span:last-child {
+//  color: #5556fd; }
+//.content-calendar .fc-listMonth-view .fc-list-item,
+//.content-calendar .fc-listWeek-view .fc-list-item {
+//  flex: 0 0 calc(80% - 5px);
+//  max-width: calc(80% - 5px);
+//  dispLay: flex;
+//  flex-direction: column;
+//  border-left: 4px solid transparent;
+//  background-color: #fff;
+//  margin-top: 15px; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item,
+//  .content-calendar .fc-listWeek-view .fc-list-item {
+//    flex: 0 0 calc(85% - 5px);
+//    max-width: calc(85% - 5px); } }
+//@media (min-width: 768px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item,
+//  .content-calendar .fc-listWeek-view .fc-list-item {
+//    flex: 0 0 calc(88% - 5px);
+//    max-width: calc(88% - 5px); } }
+//@media (min-width: 992px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item,
+//  .content-calendar .fc-listWeek-view .fc-list-item {
+//    flex: 0 0 calc(90% - 5px);
+//    max-width: calc(90% - 5px); } }
+//@media (min-width: 1200px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item,
+//  .content-calendar .fc-listWeek-view .fc-list-item {
+//    flex: 0 0 calc(92% - 5px);
+//    max-width: calc(92% - 5px); } }
+//.content-calendar .fc-listMonth-view .fc-list-item:hover, .content-calendar .fc-listMonth-view .fc-list-item:focus,
+//.content-calendar .fc-listWeek-view .fc-list-item:hover,
+//.content-calendar .fc-listWeek-view .fc-list-item:focus {
+//  cursor: pointer; }
+//.content-calendar .fc-listMonth-view .fc-list-item:hover td, .content-calendar .fc-listMonth-view .fc-list-item:focus td,
+//.content-calendar .fc-listWeek-view .fc-list-item:hover td,
+//.content-calendar .fc-listWeek-view .fc-list-item:focus td {
+//  background-color: transparent; }
+//.content-calendar .fc-listMonth-view .fc-list-item > td,
+//.content-calendar .fc-listWeek-view .fc-list-item > td {
+//  border-width: 0; }
+//.content-calendar .fc-listMonth-view .fc-list-item > td.fc-list-item-time,
+//.content-calendar .fc-listWeek-view .fc-list-item > td.fc-list-item-time {
+//  border-top: 1px solid #e6e7ef;
+//  border-right: 1px solid #e6e7ef;
+//  box-sizing: border-box; }
+//.content-calendar .fc-listMonth-view .fc-list-item > td.fc-list-item-title,
+//.content-calendar .fc-listWeek-view .fc-list-item > td.fc-list-item-title {
+//  border-bottom: 1px solid #e6e7ef;
+//  border-right: 1px solid #e6e7ef;
+//  box-sizing: border-box; }
+//.content-calendar .fc-listMonth-view .fc-list-item + .fc-list-item,
+//.content-calendar .fc-listWeek-view .fc-list-item + .fc-list-item {
+//  margin-left: 20%; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item + .fc-list-item,
+//  .content-calendar .fc-listWeek-view .fc-list-item + .fc-list-item {
+//    margin-left: 15%; } }
+//@media (min-width: 768px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item + .fc-list-item,
+//  .content-calendar .fc-listWeek-view .fc-list-item + .fc-list-item {
+//    margin-left: 12%; } }
+//@media (min-width: 992px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item + .fc-list-item,
+//  .content-calendar .fc-listWeek-view .fc-list-item + .fc-list-item {
+//    margin-left: 10%; } }
+//@media (min-width: 1200px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item + .fc-list-item,
+//  .content-calendar .fc-listWeek-view .fc-list-item + .fc-list-item {
+//    margin-left: 8%; } }
+//.content-calendar .fc-listMonth-view .fc-list-item-marker,
+//.content-calendar .fc-listWeek-view .fc-list-item-marker {
+//  display: none; }
+//.content-calendar .fc-listMonth-view .fc-list-item-time,
+//.content-calendar .fc-listWeek-view .fc-list-item-time {
+//  padding: 12px 15px 2px;
+//  width: 100%;
+//  text-transform: uppercase;
+//  font-size: 11px;
+//  font-weight: 600;
+//  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+//  letter-spacing: .5px; }
+//.content-calendar .fc-listMonth-view .fc-list-item-title,
+//.content-calendar .fc-listWeek-view .fc-list-item-title {
+//  padding: 0 15px 12px; }
+//.content-calendar .fc-listMonth-view .fc-list-item-title a,
+//.content-calendar .fc-listWeek-view .fc-list-item-title a {
+//  display: block;
+//  font-weight: 500;
+//  font-size: 16px;
+//  margin-bottom: 2px;
+//  color: #06072d; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item-title a,
+//  .content-calendar .fc-listWeek-view .fc-list-item-title a {
+//    font-size: 18px; } }
+//.content-calendar .fc-listMonth-view .fc-list-item-title .fc-desc,
+//.content-calendar .fc-listWeek-view .fc-list-item-title .fc-desc {
+//  font-size: 12px;
+//  line-height: 1.375;
+//  display: block;
+//  color: #575d78; }
+//@media (min-width: 992px) {
+//  .content-calendar .fc-listMonth-view .fc-list-item-title .fc-desc,
+//  .content-calendar .fc-listWeek-view .fc-list-item-title .fc-desc {
+//    font-size: 13px; } }
+//.content-calendar .fc-head-container .fc-day-header {
+//  font-size: 11px;
+//  font-weight: 500;
+//  text-transform: uppercase;
+//  padding: 5px 0;
+//  color: #373857; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-head-container .fc-day-header {
+//    font-size: 12px; } }
+//.content-calendar .fc-axis {
+//  font-size: 11px; }
+//@media (min-width: 576px) {
+//  .content-calendar .fc-axis {
+//    font-size: 12px; } }
+//
+//.calendar-modal-event .modal-content {
+//  border-width: 0;
+//  position: relative;
+//  background-color: transparent; }
+//
+//.calendar-modal-event .modal-header {
+//  position: relative;
+//  padding: 20px 15px;
+//  border-bottom-width: 0;
+//  display: flex;
+//  align-items: center;
+//  border-top-left-radius: 0;
+//  border-top-right-radius: 0; }
+//
+//.calendar-modal-event .nav-modal-event .nav-link {
+//  padding: 0;
+//  color: rgba(255, 255, 255, 0.75);
+//  line-height: 0;
+//  position: relative;
+//  transition: all 0.25s; }
+//@media (prefers-reduced-motion: reduce) {
+//  .calendar-modal-event .nav-modal-event .nav-link {
+//    transition: none; } }
+//.calendar-modal-event .nav-modal-event .nav-link svg {
+//  width: 16px;
+//  height: 16px; }
+//.calendar-modal-event .nav-modal-event .nav-link:hover, .calendar-modal-event .nav-modal-event .nav-link:focus {
+//  color: #fff; }
+//.calendar-modal-event .nav-modal-event .nav-link + .nav-link {
+//  margin-left: 10px; }
+//
+//.calendar-modal-event .event-title {
+//  color: #fff;
+//  font-size: 18px;
+//  font-weight: 400;
+//  margin-bottom: 0;
+//  line-height: 1;
+//  width: calc(100% - 80px);
+//  white-space: nowrap;
+//  text-overflow: ellipsis;
+//  overflow: hidden; }
+//@media (min-width: 992px) {
+//  .calendar-modal-event .event-title {
+//    font-size: 20px; } }
+//
+//.calendar-modal-event .modal-body {
+//  padding: 20px;
+//  background-color: #fff;
+//  border-bottom-right-radius: 0;
+//  border-bottom-left-radius: 0; }
+//@media (min-width: 576px) {
+//  .calendar-modal-event .modal-body {
+//    padding: 25px; } }
+//
+//.calendar-modal-event .event-start-date,
+//.calendar-modal-event .event-end-date {
+//  color: #212b35;
+//  font-weight: 500; }
+//
+//.calendar-modal-event .event-desc {
+//  margin-top: 5px; }
+//
+//.calendar-modal-event .event-desc:empty {
+//  margin-bottom: 5px; }
+//
+//.modal__container {
+//  position: fixed;
+//  display: none;
+//  top: 0;
+//  left: 0;
+//  width: 100vw;
+//  height: 100%;
+//  z-index: 1000;
+//}
+//
+//.modal__backdrop {
+//  width: 100%;
+//  height: 100%;
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//  background-color: #000000;
+//  opacity: 0.3;
+//  z-index: 0;
+//}
+//
+//.modal__window {
+//  position: relative;
+//  z-index: 10;
+//  margin: 100px auto;
+//  background: var(--white);
+//  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+//  border-radius: 4px;
+//}
+//
+//.calendar__modal .modal__window {
+//  width: 400px;
+//}
+//
+//
+//.modal__header {
+//  padding: 20px 20px 10px;
+//  display: flex;
+//  justify-content: space-between;
+//  align-items: center;
+//}
+//
+//.calendar__modal .modal__body {
+//  padding: 10px 20px 20px;
+//}
+//
+//.modal__close {
+//  cursor: pointer;
+//}
+//
+//.input-group {
+//  margin-bottom: 30px;
+//}
+//
+//.modal__footer {
+//  padding: 0 20px 20px;
+//  display: flex;
+//  justify-content: flex-end;
+//}
+//
+//.modal__footer .btn {
+//  min-width: auto;
+//}
+//
+//.modal__footer .btn:not(:last-child) {
+//  margin-right: 10px;
+//}

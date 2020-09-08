@@ -38,10 +38,12 @@
   font-weight: 600;
   font-size: 24px;
   color: var(--accent-blue);
+  margin: 0;
 }
 
 .sidebar__subtitle {
   font-size: 10px;
+  margin: 0;
 }
 
 .sidebar__title .short {
@@ -112,14 +114,14 @@
   color: var(--accent-blue);
 }
 
-.sidebar__item svg {
+.sidebar__icon {
   width: 20px;
   min-width: 20px;
   height: 20px;
   color: #C2CFE0;
 }
 
-.sidebar__item.active svg {
+.sidebar__item.active .sidebar__icon {
   color: var(--accent-blue);
 }
 

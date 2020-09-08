@@ -76,476 +76,476 @@
     </div>
 
     <div class="profile__body">
-      <div class="tabs-wrapper">
-        <ul class="tabs">
-          <li class="tabs__item"><a class="tabs__link active" href="#details">Профиль</a></li>
-          <li class="tabs__item"><a class="tabs__link" href="#records">Записи</a></li>
-          <li class="tabs__item"><a class="tabs__link" href="#calendar">Календарь</a></li>
-        </ul>
-      </div>
-      <div class="tab-content content-calendar">
-        <div id="details">
-          <div class="stat">
-            <div class="stat__col">
-              <div class="stat__card">
-                <h2 class="stat__count">44</h2>
-                <p class="stat__title">Количество записей</p>
-              </div>
-            </div>
-            <div class="stat__col">
-              <div class="stat__card">
-                <h2 class="stat__count">5</h2>
-                <p class="stat__title">Количество записей за месяц</p>
-              </div>
-            </div>
-          </div>
-          <div class="details__body">
-            <h2 class="details__title">Общая информация</h2>
-            <div class="details__body-container">
-              <div class="details__section">
-                <h3 class="details__section-title">Frist data</h3>
-                <div class="details__item">
-                  <p class="details__label">Полное Имя:</p>
-                  <p class="details__text">{{user.lastName + ' ' + user.firstName + ' ' + user.middleName}}</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Дата рождения:</p>
-                  <p class="details__text">{{user.birthday}}</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Пол:</p>
-                  <p class="details__text">{{user.gender}}</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Семейное положение:</p>
-                  <p class="details__text">{{user.maritalStatus}}</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Связанные контакты: ????</p>
-                  <a href="#" class="details__text details__link">Курчик Александр</a>
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="px-4 profile__nav" orientation="horizontal">
+        <li [ngbNavItem]="'details'" class="mt-1">
+          <a ngbNavLink>Details</a>
+          <ng-template ngbNavContent>
+            <div class="stat">
+              <div class="stat__col">
+                <div class="stat__card">
+                  <h2 class="stat__count">44</h2>
+                  <p class="stat__title">Количество записей</p>
                 </div>
               </div>
-              <div class="details__section">
-                <h3 class="details__section-title">Passport Data:</h3>
-                <div class="details__item">
-                  <p class="details__label">Гражданство:</p>
-                  <p class="details__text">Республика Беларусь</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Прописка:</p>
-                  <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Регистрация:</p>
-                  <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Номер:</p>
-                  <p class="details__text">МС 2397798</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Инд. Номер:</p>
-                  <p class="details__text">3040697В008РВ0</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Выдан:</p>
-                  <p class="details__text">Минким РУВД Партизанского района</p>
-                </div>
-                <!--                                file-->
-              </div>
-              <div class="details__section">
-                <h3 class="details__section-title">Medical data</h3>
-                <div class="details__item">
-                  <p class="details__label">Хронические заболевания:</p>
-                  <p class="details__text">Астма, Гастрит</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Аллергия на лекарства:</p>
-                  <p class="details__text">???</p>
-                </div>
-                <div class="details__item">
-                  <p class="details__label">Еще что-то:</p>
-                  <p class="details__text">???</p>
+              <div class="stat__col">
+                <div class="stat__card">
+                  <h2 class="stat__count">5</h2>
+                  <p class="stat__title">Количество записей за месяц</p>
                 </div>
               </div>
             </div>
-
-          </div>
-        </div>
-
-        <div id="calendar">
-
-        </div>
-
-        <div id="records">
-          <div class="stat">
-            <div class="stat__col">
-              <div class="stat__card">
-                <h2 class="stat__count">44</h2>
-                <p class="stat__title">Количество записей</p>
-              </div>
-            </div>
-            <div class="stat__col">
-              <div class="stat__card">
-                <h2 class="stat__count">5</h2>
-                <p class="stat__title">Количество записей за месяц</p>
-              </div>
-            </div>
-          </div>
-          <div class="records__container">
-            <div class="records__header">
-              <div class="records__search">
-                <img class="records__search-icon" src="./assets/img/header/search.svg" alt="">
-                <input type="text" class="records__search-input" placeholder="Search colleague">
-              </div>
-              <div class="records__filter">
-                <div class="records__view">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
-                    <path d="M3 3.7H20C20.1634 3.7 20.3 3.8366 20.3 4V10C20.3 10.1634 20.1634 10.3 20 10.3H3C2.8366 10.3 2.7 10.1634 2.7 10V4C2.7 3.8366 2.8366 3.7 3 3.7ZM3 13.7H20C20.1634 13.7 20.3 13.8366 20.3 14V20C20.3 20.1634 20.1634 20.3 20 20.3H3C2.8366 20.3 2.7 20.1634 2.7 20V14C2.7 13.8366 2.8366 13.7 3 13.7Z" stroke-width="1.4"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div class="records__body">
-              <div class="report-wrapper">
-                <table class="report">
-                  <thead class="report__header">
-                  <tr>
-                    <th>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="0">
-                        <label for="0" class="custom-checkbox__label"></label>
-                      </div>
-                    </th>
-                    <th><span class="report__header-text">Doctor</span></th>
-                    <th><span class="report__header-text">Title</span></th>
-                    <th><span class="report__header-text">Status</span></th>
-                    <th><span class="report__header-text">Payment</span></th>
-                    <th><span class="report__header-text">Diagnosis</span></th>
-                  </tr>
-                  </thead>
-                  <tbody class="report__body">
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="1">
-                        <label for="1" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="2">
-                        <label for="2" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="3">
-                        <label for="3" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="4">
-                        <label for="4" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="5">
-                        <label for="5" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="6">
-                        <label for="6" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="7">
-                        <label for="7" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="8">
-                        <label for="8" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="9">
-                        <label for="9" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="10">
-                        <label for="10" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="11">
-                        <label for="11" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="12">
-                        <label for="12" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-checkbox__input" id="13">
-                        <label for="13" class="custom-checkbox__label"></label>
-                      </div>
-                      <!--                        <input type="checkbox">-->
-                    </td>
-                    <td>
-                      <div class="report__user">
-                        <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
-                        <p class="report__name">Lindsey Stroud</p>
-                      </div>
-                    </td>
-                    <td>CDV04062020 - Titile</td>
-                    <td>Awaiting confirmation</td>
-                    <td>Insurance</td>
-                    <td>Lorem ipsum dolor m.</td>
-                  </tr>
-
-                  </tbody>
-                </table>
-              </div>
-              <div class="tiles-wrapper">
-                <div class="tile">
-                  <div class="tile__header">
-                    <h3 class="tile__title">DCV040620 - подозрение на флюз</h3>
-                    <div class="tile__call">Call</div>
+            <div class="details__body">
+              <h2 class="details__title">Общая информация</h2>
+              <div class="details__body-container row">
+                <div class="details__section col">
+                  <h3 class="details__section-title">General Info</h3>
+                  <div class="details__item">
+                    <p class="details__label">Полное Имя:</p>
+                    <p class="details__text">{{user.lastName + ' ' + user.firstName + ' ' + user.middleName}}</p>
                   </div>
-                  <div class="tile__body">
-                    <div class="tile__label">Date:</div>
-                    <div class="tile__text">December 23, 2018</div>
+                  <div class="details__item">
+                    <p class="details__label">Дата рождения:</p>
+                    <p class="details__text">{{user.birthday}}</p>
                   </div>
-                  <div class="tile__footer">
-                    <div class="tile__user">
-                      <div class="tile__img-wrapper"><img src="./assets/img/sidebar/avatar.png" alt=""></div>
-                      <h5 class="tile__name">Dr. Alexandra Kurchik</h5>
+                  <div class="details__item">
+                    <p class="details__label">Пол:</p>
+                    <p class="details__text">{{user.gender}}</p>
+                  </div>
+                  <div class="details__item">
+                    <p class="details__label">Семейное положение:</p>
+                    <p class="details__text">{{user.maritalStatus}}</p>
+                  </div>
+                  <div class="details__item">
+                    <p class="details__label">Связанные контакты: ????</p>
+                    <a href="#" class="details__text details__link">Курчик Александр</a>
+                  </div>
+                </div>
+                <div class="details__section col">
+                  <h3 class="details__section-title">Passport Data:</h3>
+                  <div class="details__item">
+                    <p class="details__label">Гражданство:</p>
+                    <p class="details__text">Республика Беларусь</p>
+                  </div>
+                  <div class="details__item">
+                    <p class="details__label">Прописка:</p>
+                    <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
+                  </div>
+                  <div class="details__item">
+                    <p class="details__label">Регистрация:</p>
+                    <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
+                  </div>
+                  <div class="details__item">
+                    <p class="details__label">Номер:</p>
+                    <p class="details__text">МС 2397798</p>
+                  </div>
+                  <div class="details__item">
+                    <p class="details__label">Инд. Номер:</p>
+                    <p class="details__text">3040697В008РВ0</p>
+                  </div>
+                  <div class="details__item">
+                    <p class="details__label">Выдан:</p>
+                    <p class="details__text">Минким РУВД Партизанского района</p>
+                  </div>
+                  <!--                                file-->
+                </div>
+                <div class="details__section col">
+                  <h3 class="details__section-title">Medical data</h3>
+                  <div class="details__item">
+                    <p class="details__label">Хронические заболевания:</p>
+                    <p class="details__text">Астма, Гастрит</p>
+                  </div>
+                  <div class="details__item">
+                    <p class="details__label">Аллергия на лекарства:</p>
+                    <p class="details__text">???</p>
+                  </div>
+                  <div class="details__item">
+                    <p class="details__label">Еще что-то:</p>
+                    <p class="details__text">???</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="'records'" class="mt-1">
+          <a ngbNavLink>Records</a>
+          <ng-template ngbNavContent>
+            <div class="stat">
+              <div class="stat__col">
+                <div class="stat__card">
+                  <h2 class="stat__count">0</h2>
+                  <p class="stat__title">Количество записей</p>
+                </div>
+              </div>
+              <div class="stat__col">
+                <div class="stat__card">
+                  <h2 class="stat__count">0</h2>
+                  <p class="stat__title">Количество записей за месяц</p>
+                </div>
+              </div>
+            </div>
+            <div class="records__container">
+              <div class="records__header">
+                <div class="records__search">
+                  <img class="records__search-icon" src="./assets/img/header/search.svg" alt="">
+                  <input type="text" class="records__search-input" placeholder="Search colleague">
+                </div>
+                <div class="records__filter">
+                  <div class="records__view">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+                      <path d="M3 3.7H20C20.1634 3.7 20.3 3.8366 20.3 4V10C20.3 10.1634 20.1634 10.3 20 10.3H3C2.8366 10.3 2.7 10.1634 2.7 10V4C2.7 3.8366 2.8366 3.7 3 3.7ZM3 13.7H20C20.1634 13.7 20.3 13.8366 20.3 14V20C20.3 20.1634 20.1634 20.3 20 20.3H3C2.8366 20.3 2.7 20.1634 2.7 20V14C2.7 13.8366 2.8366 13.7 3 13.7Z" stroke-width="1.4"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="records__body">
+                <div class="report-wrapper">
+                  <table class="report">
+                    <thead class="report__header">
+                    <tr>
+                      <th>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="0">
+                          <label for="0" class="custom-checkbox__label"></label>
+                        </div>
+                      </th>
+                      <th><span class="report__header-text">Doctor</span></th>
+                      <th><span class="report__header-text">Title</span></th>
+                      <th><span class="report__header-text">Status</span></th>
+                      <th><span class="report__header-text">Payment</span></th>
+                      <th><span class="report__header-text">Diagnosis</span></th>
+                    </tr>
+                    </thead>
+                    <tbody class="report__body">
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="1">
+                          <label for="1" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="2">
+                          <label for="2" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="3">
+                          <label for="3" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="4">
+                          <label for="4" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="5">
+                          <label for="5" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="6">
+                          <label for="6" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="7">
+                          <label for="7" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="8">
+                          <label for="8" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="9">
+                          <label for="9" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="10">
+                          <label for="10" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="11">
+                          <label for="11" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="12">
+                          <label for="12" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="custom-checkbox">
+                          <input type="checkbox" class="custom-checkbox__input" id="13">
+                          <label for="13" class="custom-checkbox__label"></label>
+                        </div>
+                        <!--                        <input type="checkbox">-->
+                      </td>
+                      <td>
+                        <div class="report__user">
+                          <img class="report__avatar" src="./assets/img/sidebar/avatar.png" alt="">
+                          <p class="report__name">Lindsey Stroud</p>
+                        </div>
+                      </td>
+                      <td>CDV04062020 - Titile</td>
+                      <td>Awaiting confirmation</td>
+                      <td>Insurance</td>
+                      <td>Lorem ipsum dolor m.</td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tiles-wrapper">
+                  <div class="tile">
+                    <div class="tile__header">
+                      <h3 class="tile__title">DCV040620 - подозрение на флюз</h3>
+                      <div class="tile__call">Call</div>
                     </div>
-                    <div class="tile__actions">
-                      <div class="tile__edit">                <i data-feather="edit-2"></i></div>
-                      <div class="tile__delete">                <i data-feather="trash-2"></i></div>
-                      <div class="tile__status">Status</div>
+                    <div class="tile__body">
+                      <div class="tile__label">Date:</div>
+                      <div class="tile__text">December 23, 2018</div>
+                    </div>
+                    <div class="tile__footer">
+                      <div class="tile__user">
+                        <div class="tile__img-wrapper"><img src="./assets/img/sidebar/avatar.png" alt=""></div>
+                        <h5 class="tile__name">Dr. Alexandra Kurchik</h5>
+                      </div>
+                      <div class="tile__actions">
+                        <div class="tile__edit">                <i data-feather="edit-2"></i></div>
+                        <div class="tile__delete">                <i data-feather="trash-2"></i></div>
+                        <div class="tile__status">Status</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="tile">
-                  <div class="tile__header">
-                    <h3 class="tile__title">DCV040620 - подозрение на флюз</h3>
-                    <div class="tile__call">Call</div>
-                  </div>
-                  <div class="tile__body">
-                    <div class="tile__label">Date:</div>
-                    <div class="tile__text">December 23, 2018</div>
-                  </div>
-                  <div class="tile__footer">
-                    <div class="tile__user">
-                      <div class="tile__img-wrapper"><img src="./assets/img/sidebar/avatar.png" alt=""></div>
-                      <h5 class="tile__name">Dr. Alexandra Kurchik</h5>
+                  <div class="tile">
+                    <div class="tile__header">
+                      <h3 class="tile__title">DCV040620 - подозрение на флюз</h3>
+                      <div class="tile__call">Call</div>
                     </div>
-                    <div class="tile__actions">
-                      <div class="tile__edit">                <i data-feather="edit-2"></i></div>
-                      <div class="tile__delete">                <i data-feather="trash-2"></i></div>
-                      <div class="tile__status">Status</div>
+                    <div class="tile__body">
+                      <div class="tile__label">Date:</div>
+                      <div class="tile__text">December 23, 2018</div>
+                    </div>
+                    <div class="tile__footer">
+                      <div class="tile__user">
+                        <div class="tile__img-wrapper"><img src="./assets/img/sidebar/avatar.png" alt=""></div>
+                        <h5 class="tile__name">Dr. Alexandra Kurchik</h5>
+                      </div>
+                      <div class="tile__actions">
+                        <div class="tile__edit">                <i data-feather="edit-2"></i></div>
+                        <div class="tile__delete">                <i data-feather="trash-2"></i></div>
+                        <div class="tile__status">Status</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="tile">
-                  <div class="tile__header">
-                    <h3 class="tile__title">DCV040620 - подозрение на флюз</h3>
-                    <div class="tile__call">Call</div>
-                  </div>
-                  <div class="tile__body">
-                    <div class="tile__label">Date:</div>
-                    <div class="tile__text">December 23, 2018</div>
-                  </div>
-                  <div class="tile__footer">
-                    <div class="tile__user">
-                      <div class="tile__img-wrapper"><img src="./assets/img/sidebar/avatar.png" alt=""></div>
-                      <h5 class="tile__name">Dr. Alexandra Kurchik</h5>
+                  <div class="tile">
+                    <div class="tile__header">
+                      <h3 class="tile__title">DCV040620 - подозрение на флюз</h3>
+                      <div class="tile__call">Call</div>
                     </div>
-                    <div class="tile__actions">
-                      <div class="tile__edit">                <i data-feather="edit-2"></i></div>
-                      <div class="tile__delete">                <i data-feather="trash-2"></i></div>
-                      <div class="tile__status">Status</div>
+                    <div class="tile__body">
+                      <div class="tile__label">Date:</div>
+                      <div class="tile__text">December 23, 2018</div>
+                    </div>
+                    <div class="tile__footer">
+                      <div class="tile__user">
+                        <div class="tile__img-wrapper"><img src="./assets/img/sidebar/avatar.png" alt=""></div>
+                        <h5 class="tile__name">Dr. Alexandra Kurchik</h5>
+                      </div>
+                      <div class="tile__actions">
+                        <div class="tile__edit">                <i data-feather="edit-2"></i></div>
+                        <div class="tile__delete">                <i data-feather="trash-2"></i></div>
+                        <div class="tile__status">Status</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-      </div>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="'calendar'" class="mt-1">
+          <a ngbNavLink>Calendar</a>
+          <ng-template ngbNavContent>
+            <full-calendar [options]="calendarOptions"></full-calendar>
+          </ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav" [class.p-4]="active!='calendar'" [class.content-calendar]="active=='calendar'"></div>
     </div>
   </div>
 </main>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {PersonGeneralInfoModel} from "@models/person-general-info.model";
+import {PersonGeneralInfoModel} from '@models/person-general-info.model';
+import { CalendarOptions } from '@fullcalendar/angular'; // useful for typechecking
 
 @Component({
   selector: 'app-patient',
@@ -8,9 +9,19 @@ import {PersonGeneralInfoModel} from "@models/person-general-info.model";
   styleUrls: ['./patient.component.scss']
 })
 export class PatientComponent implements OnInit {
-
+  active = 'details';
   id: string;
   user: PersonGeneralInfoModel;
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridWeek',
+    themeSystem: 'bootstrap',
+    headerToolbar: {
+      start: '',
+      center: 'title',
+      end: 'dayGridMonth,dayGridWeek today prev,next'
+    },
+  };
+
   constructor(
     private route: ActivatedRoute,
   ) { }

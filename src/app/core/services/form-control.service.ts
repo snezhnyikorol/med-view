@@ -16,22 +16,22 @@ export class FormControlService {
     return new FormGroup(form);
   }
 
-  // toMainFrom(formModel: FormBaseModel) {
+  // toMainFrom(controls: ControlBaseModel<any>[]) {
   //   const form = {};
-  //   formModel.groups.forEach(el => form[el.name] = this.toFormGroupObj(el.controls));
+  //   controls.forEach(el => form[el.key] = this.toFormGroup(el));
   //   return new FormGroup(form);
   // }
 
-  // toFormGroup(controls: ControlBaseModel<string>[]) {
-  //   const group: any = {};
-  //
-  //   controls.forEach(control => {
-  //     group[control.key] = control.required ? new FormControl(control.value || '', Validators.required)
-  //       : new FormControl(control.value || '');
-  //   });
-  //
-  //   return new FormGroup(group);
-  // }
+  toFormGroup(controls: ControlBaseModel<string>[]) {
+    const group: any = {};
+
+    controls.forEach(control => {
+      group[control.key] = control.required ? new FormControl(control.value || '', Validators.required)
+        : new FormControl(control.value || '');
+    });
+
+    return new FormGroup(group);
+  }
 
   toFormGroupObj(controls) {
     const group: any = {};

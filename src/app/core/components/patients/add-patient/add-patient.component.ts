@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {addClientFormMetadata} from '@models/forms/add-client-form';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {FormControlService} from '../../../services/form-control.service';
-import {ControlBaseModel} from '@models/controls/control-base-model';
 import {FormBaseModel} from '@models/forms/form-base.model';
 
 @Component({

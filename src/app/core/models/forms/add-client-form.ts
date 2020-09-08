@@ -167,6 +167,60 @@ export const addClientFormMetadata: FormBaseModel = {
           required: true,
         }),
       }
-    }
+    },
+
+    photo: {
+      name: 'photo',
+      title: 'Photo',
+      controls: {}
+    },
+
+    parent: {
+      name: 'parent',
+      title: 'Parent',
+      controls: {
+
+      }
+    },
+
+    generalMedicalInfo: {
+      name: 'generalMedicalInfo',
+      title: 'General Medical Info',
+      controls: {
+        chronicDiseases: new ControlInputModel({
+          key: 'chronicDiseases',
+          label: 'Chronic Diseases',
+          value: '',
+          required: true,
+        }),
+
+        bloodGroup: new ControlInputModel({
+          key: 'bloodGroup',
+          label: 'Blood Group',
+          value: '',
+          required: true,
+        }),
+
+        allergy: new ControlInputModel({
+          key: 'allergy',
+          label: 'Allergy',
+          value: '',
+          required: true,
+        }),
+      }
+    },
+
+    paymentInfo: {
+      name: 'paymentInfo',
+      title: 'Payment Info',
+      controls: {
+        insuranceCompany: new ControlInputModel({
+          key: 'insuranceCompany',
+          label: 'Insurance Company',
+          value: '',
+          required: true,
+        }),
+      }
+    },
   }
 };

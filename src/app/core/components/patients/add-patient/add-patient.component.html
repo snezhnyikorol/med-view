@@ -56,6 +56,48 @@
           </div>
         </ng-template>
       </li>
+
+      <li ngbNavItem="{{formModel.groups['photo'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['photo'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['photo'].name}}">
+          {{formModel.groups['photo'].title}}
+          <div class="row">
+
+          </div>
+        </ng-template>
+      </li>
+
+      <li ngbNavItem="{{formModel.groups['parent'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['parent'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['parent'].name}}">
+          {{formModel.groups['parent'].title}}
+          <div class="row">
+
+          </div>
+        </ng-template>
+      </li>
+
+      <li ngbNavItem="{{formModel.groups['generalMedicalInfo'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['generalMedicalInfo'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['generalMedicalInfo'].name}}">
+          {{formModel.groups['generalMedicalInfo'].title}}
+          <div class="row">
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalMedicalInfo'].controls['chronicDiseases']" [form]="form.controls[formModel.groups['generalMedicalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalMedicalInfo'].controls['bloodGroup']" [form]="form.controls[formModel.groups['generalMedicalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalMedicalInfo'].controls['allergy']" [form]="form.controls[formModel.groups['generalMedicalInfo'].name]"></app-control>
+          </div>
+        </ng-template>
+      </li>
+
+      <li ngbNavItem="{{formModel.groups['paymentInfo'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['paymentInfo'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['paymentInfo'].name}}">
+          {{formModel.groups['paymentInfo'].title}}
+          <div class="row">
+            <app-control class="col-6 mt-3" [control]="formModel.groups['paymentInfo'].controls['insuranceCompany']" [form]="form.controls[formModel.groups['paymentInfo'].name]"></app-control>
+          </div>
+        </ng-template>
+      </li>
     </ul>
 
     <div [ngbNavOutlet]="nav" class="ml-4"></div>
