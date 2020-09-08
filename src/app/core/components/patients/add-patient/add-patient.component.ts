@@ -4,6 +4,7 @@ import {addClientFormMetadata} from '@models/forms/add-client-form';
 import {FormControl, FormGroup} from '@angular/forms';
 import {FormControlService} from '../../../services/form-control.service';
 import {ControlBaseModel} from '@models/controls/control-base-model';
+import {FormBaseModel} from '@models/forms/form-base.model';
 
 @Component({
   selector: 'app-add-patient',
@@ -13,7 +14,7 @@ import {ControlBaseModel} from '@models/controls/control-base-model';
 export class AddPatientComponent implements OnInit {
   @Input() name;
   active = 'top';
-  controls: Array<ControlBaseModel<string>>;
+  formModel: FormBaseModel;
   form: FormGroup;
   constructor(
     public activeModal: NgbActiveModal,
@@ -21,8 +22,10 @@ export class AddPatientComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.controls = addClientFormMetadata;
-    this.form = this.fcs.toFormGroup(this.controls);
+    this.formModel = addClientFormMetadata;
+    this.form = this.fcs.toMainFormObj(this.formModel);
+    console.log(this.form);
+    this.active = addClientFormMetadata.groups['generalInfo'].name;
   }
 
   onSubmit() {

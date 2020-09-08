@@ -1,43 +1,172 @@
 import {ControlBaseModel} from '@models/controls/control-base-model';
 import {ControlInputModel} from '@models/controls/control-input-model';
+import {FormBaseModel} from '@models/forms/form-base.model';
 
-export const addClientFormMetadata: ControlBaseModel<string>[] = [
+export const addClientFormMetadata: FormBaseModel = {
+  groups: {
+    generalInfo: {
+      name: 'generalInfo',
+      title: 'General info',
+      controls: {
+        firstName: new ControlInputModel({
+          key: 'firstName',
+          label: 'First name',
+          value: '',
+          required: true,
+        }),
 
-  new ControlInputModel({
-    key: 'firstName',
-    label: 'First name',
-    value: '',
-    required: true,
-    order: 1
-  }),
+        middleName: new ControlInputModel({
+          key: 'middleName',
+          label: 'Middle name',
+          value: '',
+          required: true,
+        }),
 
-  new ControlInputModel({
-    key: 'middleName',
-    label: 'Middle name',
-    value: '',
-    required: true,
-    order: 2
-  }),
+        lastName: new ControlInputModel({
+          key: 'lastName',
+          label: 'Last name',
+          value: '',
+          required: true,
+        }),
 
-  new ControlInputModel({
-    key: 'lastName',
-    label: 'Last name',
-    value: '',
-    required: true,
-    order: 2
-  }),
-             // image in Base64 format?
-// firstName: string;
-// middleName: string;
-// lastName: string;
-// birthday: string;             // Date in ISO format поом объясню почему
-// gender: string;
-// tags: TagModel[];
-// maritalStatus: string;        // Семейное положение
-// contact: ContactModel;
-// address: {
-//   registration: AddressModel;
-//   actual: AddressModel;
-// };
+        gender: new ControlInputModel({
+          key: 'gender',
+          label: 'Gender',
+          value: '',
+          required: true,
+        }),
 
-];
+        birthday: new ControlInputModel({
+          key: 'birthday',
+          label: 'Birthday',
+          value: '',
+          required: true,
+        }),
+
+        isRb: new ControlInputModel({
+          key: 'isRb',
+          label: 'Is RB',
+          value: 'true',
+          required: true,
+        }),
+      }
+    },
+
+    contactInfo: {
+      name: 'contactInfo',
+      title: 'Contact Info',
+      controls: {
+        email: new ControlInputModel({
+          key: 'email',
+          label: 'Email',
+          value: '',
+          required: true,
+        }),
+
+        mobilePhone: new ControlInputModel({
+          key: 'mobilePhone',
+          label: 'Mobile phone',
+          value: '',
+          required: true,
+        }),
+
+        addPhone: new ControlInputModel({
+          key: 'addPhone',
+          label: 'Additional phone',
+          value: '',
+          required: true,
+        }),
+
+        country: new ControlInputModel({
+          key: 'country',
+          label: 'Country',
+          value: '',
+          required: true,
+        }),
+
+        region: new ControlInputModel({
+          key: 'region',
+          label: 'Region',
+          value: '',
+          required: true,
+        }),
+
+        city: new ControlInputModel({
+          key: 'city',
+          label: 'City',
+          value: '',
+          required: true,
+        }),
+
+        index: new ControlInputModel({
+          key: 'index',
+          label: 'Index',
+          value: '',
+          required: true,
+        }),
+
+        street: new ControlInputModel({
+          key: 'street',
+          label: 'Street',
+          value: '',
+          required: true,
+        }),
+
+        building: new ControlInputModel({
+          key: 'building',
+          label: 'Building',
+          value: '',
+          required: true,
+        }),
+
+        apartment: new ControlInputModel({
+          key: 'apartment',
+          label: 'Apartment',
+          value: '',
+          required: true,
+        }),
+      }
+    },
+
+    passportData: {
+      name: 'passportData',
+      title: 'Passport Data',
+      controls: {
+        passportScan: new ControlInputModel({
+          key: 'passportScan',
+          label: 'Passport Scan',
+          value: '',
+          required: true,
+        }),
+
+        address: new ControlInputModel({
+          key: 'address',
+          label: 'Address',
+          value: '',
+          required: true,
+        }),
+
+        passportNumber: new ControlInputModel({
+          key: 'passportNumber',
+          label: 'series and number of passport',
+          value: '',
+          required: true,
+        }),
+
+        whenIssued: new ControlInputModel({
+          key: 'whenIssued',
+          label: 'When Issued',
+          value: '',
+          required: true,
+        }),
+
+        issuedBy: new ControlInputModel({
+          key: 'issuedBy',
+          label: 'Issued By',
+          value: '',
+          required: true,
+        }),
+      }
+    }
+  }
+};

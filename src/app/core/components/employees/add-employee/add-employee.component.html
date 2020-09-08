@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">Hi there!</h4>
+  <h4 class="modal-title">Add employee</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -33,6 +33,41 @@
             <app-control class="col-6 mt-3" [control]="formModel.groups['jobData'].controls['academicDegree']" [form]="form.controls[formModel.groups['jobData'].name]"></app-control>
             <app-control class="col-6 mt-3" [control]="formModel.groups['jobData'].controls['category']" [form]="form.controls[formModel.groups['jobData'].name]"></app-control>
             <app-control class="col-6 mt-3" [control]="formModel.groups['jobData'].controls['degree']" [form]="form.controls[formModel.groups['jobData'].name]"></app-control>
+          </div>
+        </ng-template>
+      </li>
+
+      <li ngbNavItem="{{formModel.groups['contactInfo'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['contactInfo'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['contactInfo'].name}}">
+          {{formModel.groups['contactInfo'].title}}
+          <div class="row">
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['country']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['city']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['address']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['addPhone']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['skype']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['passportData']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+          </div>
+        </ng-template>
+      </li>
+
+      <li ngbNavItem="{{formModel.groups['photo'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['photo'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['photo'].name}}">
+          {{formModel.groups['photo'].title}}
+          <div class="row">
+
+          </div>
+        </ng-template>
+      </li>
+
+      <li ngbNavItem="{{formModel.groups['userPermissions'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['userPermissions'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['userPermissions'].name}}">
+          {{formModel.groups['userPermissions'].title}}
+          <div class="row">
+
           </div>
         </ng-template>
       </li>

@@ -1,48 +1,66 @@
 <div class="modal-header">
-  <h4 class="modal-title">Hi there!</h4>
+  <h4 class="modal-title">Add patients</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
   <div class="d-flex">
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
-      <li ngbNavItem="top">
-        <a ngbNavLink>Top</a>
-        <ng-template ngbNavContent>
-          <form (ngSubmit)="onSubmit()" [formGroup]="form" class="row">
-            <app-control class="col-6" *ngFor="let control of controls" [control]="control" [form]="form"></app-control>
-            <button class="col-12" type="submit" [disabled]="!form.valid">Save</button>
-          </form>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical" style="min-width: 200px">
+      <li ngbNavItem="{{formModel.groups['generalInfo'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['generalInfo'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['generalInfo'].name}}">
+          {{formModel.groups['generalInfo'].title}}
+          <div class="row">
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['firstName']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['lastName']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['middleName']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['birthday']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['gender']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>
+<!--            <app-control class="col-6 mt-3" [control]="formModel.groups['generalInfo'].controls['maritalStatus']" [form]="form.controls[formModel.groups['generalInfo'].name]"></app-control>-->
+            <div class="col-6 mt-3">Reserved for checkbox</div>
+          </div>
         </ng-template>
       </li>
-      <li ngbNavItem="middle">
-        <a ngbNavLink>Middle</a>
-        <ng-template ngbNavContent>
-          <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
-            farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
-            ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar
-            helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson
-            8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
-            stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+
+      <li ngbNavItem="{{formModel.groups['contactInfo'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['contactInfo'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['contactInfo'].name}}">
+          {{formModel.groups['contactInfo'].title}}
+          <div class="row">
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['email']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['mobilePhone']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['addPhone']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['country']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['region']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['city']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['index']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['street']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['building']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['contactInfo'].controls['apartment']" [form]="form.controls[formModel.groups['contactInfo'].name]"></app-control>
+          </div>
         </ng-template>
       </li>
-      <li ngbNavItem="bottom">
-        <a ngbNavLink>Bottom</a>
-        <ng-template ngbNavContent>
-          <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
-            Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
-            Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
-            egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
-            tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
-            magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
-            neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+
+      <li ngbNavItem="{{formModel.groups['passportData'].name}}" class="mt-1">
+        <a ngbNavLink>{{formModel.groups['passportData'].title}}</a>
+        <ng-template ngbNavContent formGroupName="{{formModel.groups['passportData'].name}}">
+          {{formModel.groups['passportData'].title}}
+          <div class="row">
+            <app-control class="col-6 mt-3" [control]="formModel.groups['passportData'].controls['passportScan']" [form]="form.controls[formModel.groups['passportData'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['passportData'].controls['address']" [form]="form.controls[formModel.groups['passportData'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['passportData'].controls['passportNumber']" [form]="form.controls[formModel.groups['passportData'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['passportData'].controls['whenIssued']" [form]="form.controls[formModel.groups['passportData'].name]"></app-control>
+            <app-control class="col-6 mt-3" [control]="formModel.groups['passportData'].controls['issuedBy']" [form]="form.controls[formModel.groups['passportData'].name]"></app-control>
+          </div>
         </ng-template>
       </li>
     </ul>
 
     <div [ngbNavOutlet]="nav" class="ml-4"></div>
   </div>
+  </form>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
