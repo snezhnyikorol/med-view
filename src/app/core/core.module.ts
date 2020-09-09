@@ -24,6 +24,7 @@ import {IconsModule} from '@shared/icons/icons.module';
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import bootstrapPlugin from '@fullcalendar/bootstrap';
+import { StockComponent } from './components/stock/stock.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -34,7 +35,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [LoginComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent, PatientsComponent, PatientRowComponent, AddPatientComponent, EmployeesComponent, EmployeeRowComponent, AddEmployeeComponent, PatientComponent],
+  declarations: [LoginComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent, PatientsComponent, PatientRowComponent, AddPatientComponent, EmployeesComponent, EmployeeRowComponent, AddEmployeeComponent, PatientComponent, StockComponent],
     exports: [
         LoginComponent,
     ],

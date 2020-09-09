@@ -255,3 +255,13 @@ button
 .tab-content > div:first-child {
   display: block;
 }
+
+main {
+  height: calc(100vh - 60px);
+}
+
+.content-wrapper {
+  overflow-y: auto;
+  height: calc(100% - 60px);
+  padding: 35px;
+}

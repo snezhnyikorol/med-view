@@ -1,0 +1,37 @@
+:host {
+  height: 60px;
+  border-bottom: 1px solid #EBEFF2;
+  background-color: var(--white);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: 0 35px;
+}
+
+.header__input {
+  width: 100%;
+  border: 0;
+  padding-left: 12px;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.header__input::placeholder {
+  color: var(--gray);
+}
+
+.header__input:focus {
+  outline: none;
+}
+
+.header__search {
+  padding: 23px 2px 0;
+  font-size: 13px;
+  color: #C2CFE0;
+}
+
+.header__notifications {
+  padding: 23px 4px 0;
+  font-size: 16px;
+  color: #C2CFE0;
+}

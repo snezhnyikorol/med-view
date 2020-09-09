@@ -8,6 +8,7 @@ import {AuthGuard} from './core/auth/auth.guard';
 import {PatientsComponent} from './core/components/patients/patients.component';
 import {EmployeesComponent} from './core/components/employees/employees.component';
 import {PatientComponent} from "./core/components/patient/patient.component";
+import {StockComponent} from "./core/components/stock/stock.component";
 
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'patient/:id',
         component: PatientComponent
+      },
+      {
+        path: 'stock',
+        component: StockComponent
       }
     ]
   },

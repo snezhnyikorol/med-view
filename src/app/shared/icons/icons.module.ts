@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FeatherModule } from 'angular-feather';
-import { HelpCircle, Aperture, Box, Calendar, Inbox, User, Folder, Clipboard } from 'angular-feather/icons';
+import { HelpCircle, Aperture, Box, Calendar, Inbox, User, Folder, Clipboard, Package, ShoppingCart } from 'angular-feather/icons';
 
 const icons = {
   Aperture,
@@ -10,7 +10,9 @@ const icons = {
   Inbox,
   User,
   Folder,
-  Clipboard
+  Clipboard,
+  Package,
+  ShoppingCart
 };
 
 @NgModule({

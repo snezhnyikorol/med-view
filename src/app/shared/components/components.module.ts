@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {AppRoutingModule} from "../../app-routing.module";
 import {IconsModule} from "@shared/icons/icons.module";
+import { HeaderComponent } from './header/header.component';
 
 
 
 @NgModule({
-    declarations: [SidebarComponent],
+    declarations: [SidebarComponent, HeaderComponent],
     exports: [
-        SidebarComponent
+        SidebarComponent,
+        HeaderComponent
     ],
   imports: [
     CommonModule,
