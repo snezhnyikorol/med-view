@@ -15,7 +15,7 @@ import { PatientsComponent } from './components/patients/patients.component';
 import { PatientRowComponent } from './components/patients/patient-row/patient-row.component';
 import {SharedModule} from '@shared/shared.module';
 import { AddPatientComponent } from './components/patients/add-patient/add-patient.component';
-import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbNavModule, NgbPopoverModule} from '@ng-bootstrap/ng-bootstrap';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeRowComponent } from './components/employees/employee-row/employee-row.component';
 import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
@@ -25,6 +25,8 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // the main connecto
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import { StockComponent } from './components/stock/stock.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -35,21 +37,22 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [LoginComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent, PatientsComponent, PatientRowComponent, AddPatientComponent, EmployeesComponent, EmployeeRowComponent, AddEmployeeComponent, PatientComponent, StockComponent],
+  declarations: [LoginComponent, TestComponent, AuthorizedContainerComponent, AdminDashboardComponent, PatientsComponent, PatientRowComponent, AddPatientComponent, EmployeesComponent, EmployeeRowComponent, AddEmployeeComponent, PatientComponent, StockComponent, EmployeeComponent, CalendarComponent],
     exports: [
         LoginComponent,
     ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    ControlsModule,
-    ComponentsModule,
-    RouterModule,
-    NgbNavModule,
-    IconsModule,
-    FullCalendarModule
-  ],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        ControlsModule,
+        ComponentsModule,
+        RouterModule,
+        NgbNavModule,
+        IconsModule,
+        FullCalendarModule,
+        NgbPopoverModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

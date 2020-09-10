@@ -4,14 +4,17 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {AppRoutingModule} from "../../app-routing.module";
 import {IconsModule} from "@shared/icons/icons.module";
 import { HeaderComponent } from './header/header.component';
+import { TableComponent } from './table/table.component';
+import { TableRowComponent } from './table/table-row/table-row.component';
 
 
 
 @NgModule({
-    declarations: [SidebarComponent, HeaderComponent],
+    declarations: [SidebarComponent, HeaderComponent, TableComponent, TableRowComponent],
     exports: [
         SidebarComponent,
-        HeaderComponent
+        HeaderComponent,
+        TableComponent
     ],
   imports: [
     CommonModule,

@@ -9,6 +9,8 @@ import {PatientsComponent} from './core/components/patients/patients.component';
 import {EmployeesComponent} from './core/components/employees/employees.component';
 import {PatientComponent} from "./core/components/patient/patient.component";
 import {StockComponent} from "./core/components/stock/stock.component";
+import {EmployeeComponent} from './core/components/employee/employee.component';
+import {CalendarComponent} from './core/calendar/calendar.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,11 @@ const routes: Routes = [
     component: AuthorizedContainerComponent,
     children: [
       {
+        path: 'calendar',
+        component: CalendarComponent,
+
+      },
+      {
         path: 'patients',
         component: PatientsComponent,
 
@@ -39,6 +46,11 @@ const routes: Routes = [
         component: PatientComponent
       },
       {
+        path: 'employee/:id',
+        component: EmployeeComponent,
+
+      },
+      {
         path: 'stock',
         component: StockComponent
       }
@@ -46,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'app',
+    redirectTo: 'app/stock',
     pathMatch: 'full'
   },
   {

@@ -1,0 +1,213 @@
+<main class="content-wrapper">
+  <div class="content profile-content">
+    <div class="profile__sidebar">
+
+      <div class="profile__sidebar-header">
+        <div class="profile__avatar-wrapper">
+          <img src="{{user.photo}}" alt="" class="profile__avatar">
+        </div>
+        <h5 class="profile__name">
+          {{user.firstName + ' ' + user.lastName}}
+        </h5>
+        <!--        <p class="profile__position">-->
+        <!--          Хирург-ортопед-->
+        <!--        </p>-->
+        <p class="profile__location">
+          Адрес?
+        </p>
+
+      </div>
+
+      <div class="profile__sidebar-body">
+        <label class="profile__label">
+          ССЫЛКИ:
+        </label>
+        <ul class="profile__info">
+          <li class="profile__info-item">
+            <i data-feather="globe"></i>
+            <a href="">http://resume.kurchik/</a>
+          </li>
+          <li class="profile__info-item">
+            <i data-feather="github"></i>
+            <a href="">@kurchik</a>
+          </li>
+          <li class="profile__info-item">
+            <i data-feather="twitter"></i>
+            <a href="">@kurchik</a>
+          </li>
+          <li class="profile__info-item">
+            <i data-feather="instagram"></i>
+            <a href="">@kurchik</a>
+          </li>
+          <li class="profile__info-item">
+            <i data-feather="facebook"></i>
+            <a href="">@kurchik</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="profile__sidebar-footer">
+        <label class="profile__label">
+          КОНТАКТНАЯ ИНФОРМАЦИЯ
+        </label>
+        <ul class="profile__info">
+          <li class="profile__info-item">
+            <i data-feather="briefcase"></i>
+            <span>Минск, Гурского 44/2</span>
+          </li>
+          <li class="profile__info-item">
+            <i data-feather="home"></i>
+            <span>Минск, Жуковского 10/2</span>
+          </li>
+          <li class="profile__info-item">
+            <i data-feather="smartphone"></i>
+            <a href="">+375 (29) 133 80 75</a>
+          </li>
+          <li class="profile__info-item">
+            <i data-feather="phone"></i>
+            <a href="">+375 (29) xxx xx xx</a>
+          </li>
+          <li class="profile__info-item">
+            <i data-feather="mail"></i>
+            <a href="">kurchik.sasha@mail.ru</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="profile__body">
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="px-4 profile__nav" orientation="horizontal">
+        <li [ngbNavItem]="'details'" class="mt-1">
+          <a ngbNavLink>Details</a>
+          <ng-template ngbNavContent>
+            <div class="stat">
+              <div class="stat__col">
+                <div class="stat__card">
+                  <h2 class="stat__count">44</h2>
+                  <p class="stat__title">Количество записей</p>
+                </div>
+              </div>
+              <div class="stat__col">
+                <div class="stat__card">
+                  <h2 class="stat__count">5</h2>
+                  <p class="stat__title">Количество записей за месяц</p>
+                </div>
+              </div>
+            </div>
+            <div class="page__body d-flex mt-5">
+              <div class="records__body mr-5">
+                <h2 class="details__title">Записи пациентов</h2>
+                <div class="records__list d-flex flex-column">
+                  <div class="records__separator">
+                    <h3>Сегодня</h3>
+                  </div>
+                  <div *ngFor="let i of count1" class="record__container">
+                    <img src="//style.anu.edu.au/_anu/4/images/placeholders/person.png" alt="">
+                    <div class="record__info">
+                      <div class="record__title">
+                        <div class="record__date">
+                          22/07/2020г. 15:35
+                        </div>
+                        <div class="record__room">
+                          13 каб.
+                        </div>
+                      </div>
+                      <div class="record__name">
+                        Name Surname
+                      </div>
+                    </div>
+                  </div>
+                  <div class="records__separator">
+                    <h3>Вчера</h3>
+                  </div>
+                  <div *ngFor="let i of count2" class="record__container">
+                    <img src="//style.anu.edu.au/_anu/4/images/placeholders/person.png" alt="">
+                    <div class="record__info">
+                      <div class="record__title">
+                        <div class="record__date">
+                          22/07/2020г. 15:35
+                        </div>
+                        <div class="record__room">
+                          13 каб.
+                        </div>
+                      </div>
+                      <div class="record__name">
+                        Name Surname
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="details__body">
+                <h2 class="details__title">Общая информация</h2>
+                <div class="details__body-container row">
+                  <div class="details__section col">
+                    <h3 class="details__section-title">General Info</h3>
+                    <div class="details__item">
+                      <p class="details__label">Полное Имя:</p>
+                      <p class="details__text">{{user.lastName + ' ' + user.firstName + ' ' + user.middleName}}</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Дата рождения:</p>
+                      <p class="details__text">{{user.birthday}}</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Пол:</p>
+                      <p class="details__text">{{user.gender}}</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Семейное положение:</p>
+                      <p class="details__text">{{user.maritalStatus}}</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Связанные контакты: ????</p>
+                      <a href="#" class="details__text details__link">Курчик Александр</a>
+                    </div>
+                  </div>
+                  <div class="details__section col">
+                    <h3 class="details__section-title">Passport Data:</h3>
+                    <div class="details__item">
+                      <p class="details__label">Гражданство:</p>
+                      <p class="details__text">Республика Беларусь</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Прописка:</p>
+                      <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Регистрация:</p>
+                      <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Номер:</p>
+                      <p class="details__text">МС 2397798</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Инд. Номер:</p>
+                      <p class="details__text">3040697В008РВ0</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Выдан:</p>
+                      <p class="details__text">Минким РУВД Партизанского района</p>
+                    </div>
+                    <!--                                file-->
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="'calendar'" class="mt-1">
+          <a ngbNavLink>Calendar</a>
+          <ng-template ngbNavContent>
+            <full-calendar [options]="calendarOptions"></full-calendar>
+          </ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav" [class.p-4]="active!='calendar'" [class.content-calendar]="active=='calendar'"></div>
+    </div>
+  </div>
+</main>

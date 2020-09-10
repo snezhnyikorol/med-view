@@ -1,0 +1,19 @@
+<table class="report">
+  <thead class="report__header">
+  <tr>
+    <ng-template [ngIf]="hasCheckbox">
+      <th style="width: 50px">
+        <div class="custom-checkbox">
+          <input type="checkbox" class="custom-checkbox__input" id="0">
+          <label for="0" class="custom-checkbox__label"></label>
+        </div>
+      </th>
+    </ng-template>
+    <th *ngFor="let headerItem of params.header"><span class="report__header-text" [innerHTML]="headerItem.content"></span></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody class="report__body">
+  <tr app-table-row *ngFor="let row of params.body; let id = index" [rowData]="row" [id]="id" ></tr>
+  </tbody>
+</table>

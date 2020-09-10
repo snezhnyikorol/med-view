@@ -5,10 +5,14 @@
 
 .header {
   .title {
+    .name {
+      color: var(--accent-blue);
+    }
     display: flex;
     justify-content: space-between;
     .basket{
       display: flex;
+      align-items: baseline;
     }
   }
 
@@ -84,6 +88,9 @@
     }
   }
 
-
+  .report-wrapper {
+    overflow-x: auto;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+  }
 
 }

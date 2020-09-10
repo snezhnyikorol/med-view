@@ -1,0 +1,16 @@
+<ng-template [ngIf]="hasCheckbox">
+  <td>
+    <div class="custom-checkbox">
+      <input type="checkbox" class="custom-checkbox__input" id="{{id}}">
+      <label for="{{id}}" class="custom-checkbox__label"></label>
+    </div>
+  </td>
+</ng-template>
+<td *ngFor="let item of rowData.items" [innerHTML]="item?.content"></td>
+<td>
+  <div class="d-flex justify-content-between align-items-center">
+    <i class="fas fa-lg fa-minus-square" (click)="subtractItem()"></i>
+    {{rowData.count}}
+    <i class="fas fa-lg fa-plus-square" (click)="addItem()"></i>
+  </div>
+</td>

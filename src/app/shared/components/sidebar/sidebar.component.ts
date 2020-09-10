@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  compact = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleSidebar() {
+    this.compact = !this.compact;
+  }
 }
