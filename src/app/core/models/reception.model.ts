@@ -7,7 +7,7 @@ export interface ReceptionModel {
     endDate: string;
     status: string;
     payment: {
-      
+
     }
     paymentStatus: string;
     cost: string;

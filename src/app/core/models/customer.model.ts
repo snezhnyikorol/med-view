@@ -12,7 +12,7 @@ export interface CustomerModel extends PersonGeneralInfoModel {
     issueDate: string;
     expirationDate: string;     //На это можно завязать нотификашку что надо обновить данные
     attachment: File;
-  },
+  };
   parentContactList: {          //Нахуа, может назвать экстренные контакты?
     firstName: string;
     middleName: string;

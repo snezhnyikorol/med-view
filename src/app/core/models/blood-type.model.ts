@@ -1,5 +1,5 @@
 export interface BloodTypeModel {
-  type: BloodTypeModel;
+  type: BloodTypeEnum;
   rhFactor: RhesusFactor;
 }
 
