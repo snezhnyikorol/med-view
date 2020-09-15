@@ -1,0 +1,37 @@
+{
+  "name": "server-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rmdir /s /q .\\dist",
+    "copy-static": "xcopy .\\src\\static .\\dist\\static /e /i /h",
+    "build": "npm-run-all clean tsc copy-static",
+    "tsc": "tsc",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx src",
+    "eslint:dump": "eslint --print-config ./.eslintrc.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "bootstrap": "^4.5.2",
+    "eslint": "^7.8.1",
+    "eslint-plugin-optimize-regex": "^1.2.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "eslint-plugin-sonarjs": "^0.5.0",
+    "ts-node-dev": "^1.0.0-pre.62",
+    "tsc": "^1.20150623.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "g": "^2.0.1"
+  }
+}

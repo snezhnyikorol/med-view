@@ -1,0 +1,98 @@
+{
+  /* Полный спиок настроек https://gist.github.com/KRostyslav/82a25c469ffa6652825d58537ac6bc22 */
+  "compilerOptions": {                        // Настраивает параметры компиляции. Параметры называются также, как и в командной строке.
+
+    /**** Основные настройки ****/
+
+    // "incremental": true,                   /* Enable incremental compilation */
+    "target": "es5",                          // Тип кода создаваемого итогового файла. 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'.
+    "module": "commonjs",                     // Определяет тип импорта кода в итоговом файле, прописанном в "outFile". Необходимо задавать при использовании опции "outFile".: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'.
+    "lib": [
+      // Набор библиотечных файлов полифилов, которые будут включены в итоговый выходной файл. ["es5", "es6", "es2015.promise", "es2016.array.include"]
+      "es2016",
+      "dom"
+    ],
+    // "allowJs": true,                       // Разрешать компилировать файлы с JavaScript-кодом?
+    // "checkJs": true,                       // Сообщить об ошибках в .js-файлах? Используйте совместно с "allowJs".
+    // "jsx": "preserve",                     // Включать ли поддержку ".tsx" файлов? 'preserve', 'react-native', or 'react'. */
+    "declaration": false,                     // Создавать ли соответствующие файлы ".d.ts"?
+    // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
+    "sourceMap": true,                        // Создавать ли соответствующие source map файлы ".map"?
+    // "outFile": "./",                       // Имя единого итогового выходного файла, в который будут помещен код из всех найденных TypeScript-файлов.
+    "outDir": "./dist",                       // Поместить все скомпилированные файлы в данную папку, согласно их вложенности в исходниках. Если задана опция "outFile", то опция "outDir" будет проигнорирована.
+    // "rootDir": "./",                       // Путь до папки с которой надо начинать поиск входных файлов. Обычно корневая директория вычисляется по списку входных файлов. Данная опция необходима для проверки, что все найденные TypeScript-файлы находятся внутри корневой папки.
+    // "composite": true,                     /* Enable project compilation */
+    // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
+    "removeComments": true,                   // Удалить все комментарии из итогового файла.
+    // "noEmit": true,                        // Не создавать итоговый файл.
+    // "importHelpers": true,                 // Имортировать созданные хелперы (__extends, __rest и так далее) из "tslib".
+    "downlevelIteration": true,               // Обеспечьте полную поддержку итераций для for - in, ..., деструктуризации при настройке на ES5 или ES3?
+    // "isolatedModules": true,               // Обрабатывать каждый файл, как отдельный изолированный модуль.
+
+    /**** Strict Type-Checking Options ****/
+
+    "strict": true,                           // Включить ли все строгие проверки типов сразу: noImplicitAny, noImplicitThis, alwaysStrict, strictNullChecks, strictFunctionTypes, strictPropertyInitialization?
+    "noImplicitAny": false,                   // Показывать ошибку, если где-то задан тип "any".
+    // "strictNullChecks": true,              // Значения "null" и "undefined" могут быть присвоены только значениям данного типа и значениям только с типом "any"?
+    // "strictFunctionTypes": true,           // Отключить проверку бивариантных параметров для типов функций.
+    // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
+    // "strictPropertyInitialization": true,  // Убедитесь, что свойства класса, имеющие значения undefined, получают новые значения внутри конструктора.
+    // "noImplicitThis": true,                // Показывать ошибку на "this", если где-то задан тип "any".
+    // "alwaysStrict": true,                  // Компилировать ли каждый файл в строгом режиме и создавать ли 'use strict' для каждого выходного файла? Требуется TypeScript версии 2.1 или новее.
+
+    /**** Additional Checks ****/
+
+    // "noUnusedLocals": true,                // Показывать ошибку, если где-то найдены неиспользуемые локальные значения.
+    // "noUnusedParameters": true,            // Показывать ошибку, если где-то найдены неиспользуемые параметры.
+    //"noImplicitReturns": true,              // Сообщить об ошибке, когда не все пути кода в функции возвращают значение?
+    //"noFallthroughCasesInSwitch": true,     // Сообщить об ошибке в случае обнаружения проваливания в конструкции switch-case?
+
+    /**** Module Resolution Options ****/
+
+    "moduleResolution": "node",               // Определить способ поиска модулей в папках: как в Node.js или классический, как в TypeScript 1.5 и ниже.
+    "baseUrl": "src",                         // Путь до базовой папки для поиска не относительных путей до файлов.
+    "paths": {                                // Укажите сопоставление маршрутов для вычисления по сравнению с параметром baseUrl.
+      "*": [
+        "node_modules/*"
+      ]
+    },
+    // "rootDirs": [],                        // Список корневых папок, совокупный контент которых представляет структуру проекта для компиляции.
+    "typeRoots": [
+      // По умолчанию все видимые в проекте пакеты "@types", расположенные в папках "node_modules" на всех уровнях вложенности, используются при компиляции.
+      // Но, если указан массив "typeRoots", тогда при компиляции будут использованы только описания типов, найденные в папках, расположенных по перечисленным в нем путях.
+      // При этом описания типов, находящихся в других папках использованы не будут.
+      // Папки с пакетами описаний типов обычно содержат внутри себя файл "index.d.ts" или "package.json" со свойством "types".
+      //"./typings" При компиляции будут использованы только файлы описания типов ".d.ts" находящиеся в этой папке.
+      "node_modules/@types"
+    ],
+    // "types": ["node", "lodash", "express"],// Если указан параметр "types", то из всех найденных будут использованы только те описания типов, что указаны в его массиве, а именно: "./typings/node", "./typings/lodash", "./typings/express".
+    // "allowSyntheticDefaultImports": true,  // Разрешить импортировать модули не имеющие внутри себя "import default"?
+    "esModuleInterop": true,                  // Создать хелперы __importStar и __importDefault для обеспечения совместимости с экосистемой Babel и включить allowSyntheticDefaultImports для совместимости с системой типов.
+    // "preserveSymlinks": true,              // Не заменять символические ссылки на их реальный путь, обрабатывать символический файл как реальный.
+    // "allowUmdGlobalAccess": true,          /* Allow accessing UMD globals from modules. */
+
+    /**** Source Map Options ****/
+
+    // "sourceRoot": "",                      // Путь до папки, в которой дебаггер должен искать исходные source файлы.
+    // "mapRoot": "",                         // Путь до папки, в которой дебаггер браузера должен будет искать файлы с source map.
+    // "inlineSourceMap": true,               // Помещать ли source map в итоговый файл, вместо того чтобы иметь отдельный файл с source map?
+    // "inlineSources": true,                 // Помещать ли source в итоговый файл рядом с source map?; requires '--inlineSourceMap' or '--sourceMap' to be set
+
+    /**** Experimental Options ****/
+
+    "experimentalDecorators": true,           // Включить экспериментальную поддержку декораторов EcmaScript?
+    "emitDecoratorMetadata": true,            // Создавать метаданные для объявлений декораторов в исходном коде?
+    "resolveJsonModule": true,
+
+    /**** Advanced Options ****/
+
+    "skipLibCheck": true,                     // Не проверять типы, заданные во всех файлах описания типов (*.d.ts)?
+    "forceConsistentCasingInFileNames": true  // Запретить несогласованные ссылки на один и тот же файл?
+  },
+  "include": [
+    // Секция "include" позволяет скомпилировать все файлы, находящиеся в заданных папках.
+    // Если секция "files" и секция "include" заданы вместе, то будут скомпилированы только файлы, перечисленные в обеих секциях.
+    // Все файлы, на которые есть ссылки во включенных файлах из секции "files" и секции "include", также скомпилируются.
+    "src/**/*"
+  ]
+}
