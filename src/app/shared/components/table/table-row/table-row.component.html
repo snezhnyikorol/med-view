@@ -6,7 +6,7 @@
     </div>
   </td>
 </ng-template>
-<td *ngFor="let item of rowData.items" [innerHTML]="item?.content"></td>
+<td *ngFor="let item of rowData.items" [cellData]="item" app-table-cell appTableCellContent></td>
 <td>
   <div class="d-flex justify-content-between align-items-center">
     <i class="fas fa-lg fa-minus-square" (click)="subtractItem()"></i>

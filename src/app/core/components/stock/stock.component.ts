@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ControlInputComponent} from "@shared/components/controls/control-input/control-input.component";
 
 @Component({
   selector: 'app-stock',
@@ -45,7 +46,8 @@ export class StockComponent implements OnInit {
           count: 0,
           items: [
             {
-              content: 'Имплантат'
+              content: 'Имплантат',
+              // component: ControlInputComponent
             },
             {
               content: 'Straumann'

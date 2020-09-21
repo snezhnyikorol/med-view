@@ -80,91 +80,92 @@
         <li [ngbNavItem]="'details'" class="mt-1">
           <a ngbNavLink>Details</a>
           <ng-template ngbNavContent>
-            <div class="stat">
-              <div class="stat__col">
+            <div class="row">
+              <div class="col">
                 <div class="stat__card">
                   <h2 class="stat__count">44</h2>
                   <p class="stat__title">Количество записей</p>
                 </div>
               </div>
-              <div class="stat__col">
+              <div class="col">
                 <div class="stat__card">
                   <h2 class="stat__count">5</h2>
                   <p class="stat__title">Количество записей за месяц</p>
                 </div>
               </div>
             </div>
-            <div class="details__body">
-              <h2 class="details__title">Общая информация</h2>
-              <div class="details__body-container row">
-                <div class="details__section col">
-                  <h3 class="details__section-title">General Info</h3>
-                  <div class="details__item">
-                    <p class="details__label">Полное Имя:</p>
-                    <p class="details__text">{{user.lastName + ' ' + user.firstName + ' ' + user.middleName}}</p>
+            <div class="details__body row mt-5">
+              <div class="col">
+                <h2 class="details__title">Общая информация</h2>
+                <div class="details__body-container row">
+                  <div class="details__section col">
+                    <h3 class="details__section-title">General Info</h3>
+                    <div class="details__item">
+                      <p class="details__label">Полное Имя:</p>
+                      <p class="details__text">{{user.lastName + ' ' + user.firstName + ' ' + user.middleName}}</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Дата рождения:</p>
+                      <p class="details__text">{{user.birthday}}</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Пол:</p>
+                      <p class="details__text">{{user.gender}}</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Семейное положение:</p>
+                      <p class="details__text">{{user.maritalStatus}}</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Связанные контакты: ????</p>
+                      <a href="#" class="details__text details__link">Курчик Александр</a>
+                    </div>
                   </div>
-                  <div class="details__item">
-                    <p class="details__label">Дата рождения:</p>
-                    <p class="details__text">{{user.birthday}}</p>
+                  <div class="details__section col">
+                    <h3 class="details__section-title">Passport Data:</h3>
+                    <div class="details__item">
+                      <p class="details__label">Гражданство:</p>
+                      <p class="details__text">Республика Беларусь</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Прописка:</p>
+                      <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Регистрация:</p>
+                      <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Номер:</p>
+                      <p class="details__text">МС 2397798</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Инд. Номер:</p>
+                      <p class="details__text">3040697В008РВ0</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Выдан:</p>
+                      <p class="details__text">Минким РУВД Партизанского района</p>
+                    </div>
+                    <!--                                file-->
                   </div>
-                  <div class="details__item">
-                    <p class="details__label">Пол:</p>
-                    <p class="details__text">{{user.gender}}</p>
-                  </div>
-                  <div class="details__item">
-                    <p class="details__label">Семейное положение:</p>
-                    <p class="details__text">{{user.maritalStatus}}</p>
-                  </div>
-                  <div class="details__item">
-                    <p class="details__label">Связанные контакты: ????</p>
-                    <a href="#" class="details__text details__link">Курчик Александр</a>
-                  </div>
-                </div>
-                <div class="details__section col">
-                  <h3 class="details__section-title">Passport Data:</h3>
-                  <div class="details__item">
-                    <p class="details__label">Гражданство:</p>
-                    <p class="details__text">Республика Беларусь</p>
-                  </div>
-                  <div class="details__item">
-                    <p class="details__label">Прописка:</p>
-                    <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
-                  </div>
-                  <div class="details__item">
-                    <p class="details__label">Регистрация:</p>
-                    <p class="details__text">г. Минск, пр-т Партизанский, 54</p>
-                  </div>
-                  <div class="details__item">
-                    <p class="details__label">Номер:</p>
-                    <p class="details__text">МС 2397798</p>
-                  </div>
-                  <div class="details__item">
-                    <p class="details__label">Инд. Номер:</p>
-                    <p class="details__text">3040697В008РВ0</p>
-                  </div>
-                  <div class="details__item">
-                    <p class="details__label">Выдан:</p>
-                    <p class="details__text">Минким РУВД Партизанского района</p>
-                  </div>
-                  <!--                                file-->
-                </div>
-                <div class="details__section col">
-                  <h3 class="details__section-title">Medical data</h3>
-                  <div class="details__item">
-                    <p class="details__label">Хронические заболевания:</p>
-                    <p class="details__text">Астма, Гастрит</p>
-                  </div>
-                  <div class="details__item">
-                    <p class="details__label">Аллергия на лекарства:</p>
-                    <p class="details__text">???</p>
-                  </div>
-                  <div class="details__item">
-                    <p class="details__label">Еще что-то:</p>
-                    <p class="details__text">???</p>
+                  <div class="details__section col">
+                    <h3 class="details__section-title">Medical data</h3>
+                    <div class="details__item">
+                      <p class="details__label">Хронические заболевания:</p>
+                      <p class="details__text">Астма, Гастрит</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Аллергия на лекарства:</p>
+                      <p class="details__text">???</p>
+                    </div>
+                    <div class="details__item">
+                      <p class="details__label">Еще что-то:</p>
+                      <p class="details__text">???</p>
+                    </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </ng-template>
         </li>
@@ -545,7 +546,7 @@
           </ng-template>
         </li>
       </ul>
-      <div [ngbNavOutlet]="nav" [class.p-4]="active!='calendar'" [class.content-calendar]="active=='calendar'"></div>
+      <div [ngbNavOutlet]="nav" class="container-fluid" [class.p-4]="active!='calendar'" [class.content-calendar]="active=='calendar'"></div>
     </div>
   </div>
 </main>
