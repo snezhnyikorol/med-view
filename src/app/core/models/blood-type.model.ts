@@ -1,6 +1,6 @@
 export interface BloodTypeModel {
   type: BloodTypeEnum;
-  rhFactor: RhesusFactor;
+  rhFactor: RhesusFactorEnum;
 }
 
 export enum BloodTypeEnum {
@@ -10,7 +10,7 @@ export enum BloodTypeEnum {
   AB = 'IV',
 }
 
-export enum RhesusFactor {
+export enum RhesusFactorEnum {
   POSITIVE = '+',
   NEGATIVE = '-'
 }

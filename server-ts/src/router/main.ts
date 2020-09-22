@@ -100,7 +100,7 @@ router.get('/generate/customerList', (req: Request, res: Response, next: NextFun
     birthday: 'string',
     gender: 'string',
     tags: 'TagModel[]',
-    maritalStatus: 'string',
+    maritalStatus: 'string          //@values[\'Холост\', \'Женат/Замужем\'];',
     contact: 'ContactModel',
     address: {
       registration: 'AddressModel',
@@ -132,6 +132,7 @@ router.get('/generate/customerList', (req: Request, res: Response, next: NextFun
     genericType: 'Array<number>',
     genericCustomType: 'Array<AllergyModel>',
     tupleType: ['number', 'string'],
+    tupleTypeArray: [['number', 'string']],
 
     medicalCard: {
       bloodType: 'BloodTypeModel',
@@ -151,6 +152,51 @@ router.get('/generate/customerList', (req: Request, res: Response, next: NextFun
   // fileGeneratorService.addHelper('contactModel[]', contactList);
 
   fileGeneratorService.generateOutputFile('customerList.json', JSON.stringify(contactList, null, 2))
+    // eslint-disable-next-line promise/prefer-await-to-then,sonarjs/no-identical-functions
+    .then(result => res.send([
+      result,
+      JSON.stringify({ helper: [...fileGeneratorService.helper] }, null, 2)
+    ]))
+    .catch(err => res.send('error at fileGeneratorService.generateOutputFile\n' + err))
+});
+
+/**
+ * Route for generate a JSON file of 100 items by contact List Model
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+router.get('/generate/employeeList', (req: Request, res: Response, next: NextFunction) => {
+  const model = {
+    id: 'number',
+    photo: 'string',
+    firstName: 'string',
+    middleName: 'string',
+    lastName: 'string',
+    birthday: 'string',
+    gender: 'string',
+    tags: 'TagModel[]',
+    maritalStatus: 'string          //@values[\'Холост\', \'Женат/Замужем\'];',
+    contact: 'ContactModel',
+    address: {
+      registration: 'AddressModel',
+      actual: 'AddressModel',
+    },
+    position: 'string   //@values["Врач", "Главрач", "Ассистент Врача", "Менеджер", "Кладовщик"];',
+    permissionList: 'PermissionModel[]',
+    department: {
+      name: 'string   //@values["Зубодробители", "Челюстные Копатели", "Дыробурильщики"];',
+      address: 'AddressModel',
+    },
+    skills: {
+      academicDegree: 'string[]   //@values["Доцент", "Бакалавр", "Магистр"];',
+      qualification: 'string',
+      category: 'string'
+    }
+  }
+
+  const employeeList = fileGeneratorService.generateMockFormObjectModel(model)
+  // fileGeneratorService.addHelper('contactModel[]', contactList);
+
+  fileGeneratorService.generateOutputFile('employeeList.json', JSON.stringify(employeeList, null, 2))
     // eslint-disable-next-line promise/prefer-await-to-then,sonarjs/no-identical-functions
     .then(result => res.send([
       result,

@@ -95,6 +95,7 @@
 
     "promise/prefer-await-to-then": "error",
 
+    "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-extra-parens": ["error"],
     "@typescript-eslint/member-delimiter-style": ["error", { "multiline": { "delimiter": "none" } }],
     "@typescript-eslint/member-ordering": "warn",

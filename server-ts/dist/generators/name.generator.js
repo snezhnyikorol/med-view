@@ -33,12 +33,21 @@ var NameGenerator = (function () {
         return [
             this.lastNameList[utils_1.getRandomInt(0, this.lastNameList.length)] + (this.isMale(personName) ? '' : 'а'),
             personName,
-            this.middleNameList[utils_1.getRandomInt(0, this.middleNameList.length)] + (this.isMale(personName) ? '' : 'на')
+            this.middleNameList[utils_1.getRandomInt(0, this.middleNameList.length)] + (this.isMale(personName) ? 'ич' : 'на')
         ];
+    };
+    NameGenerator.prototype.getFirstName = function () {
+        return this.firstNameList[utils_1.getRandomInt(0, this.firstNameList.length)];
+    };
+    NameGenerator.prototype.getLastName = function (firstName) {
+        return this.lastNameList[utils_1.getRandomInt(0, this.lastNameList.length)] + (this.isMale(firstName) ? '' : 'а');
+    };
+    NameGenerator.prototype.getMiddleName = function (firstName) {
+        return this.middleNameList[utils_1.getRandomInt(0, this.middleNameList.length)] + (this.isMale(firstName) ? 'ич' : 'на');
     };
     NameGenerator.prototype.isMale = function (firstName) {
         var lastChar = firstName.slice(-1);
-        return lastChar !== 'a' && lastChar !== 'я';
+        return lastChar !== 'а' && lastChar !== 'я';
     };
     return NameGenerator;
 }());

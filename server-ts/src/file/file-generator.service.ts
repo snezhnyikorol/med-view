@@ -1,9 +1,9 @@
 import { BasicTypeArrayEnum } from './basic-type-array.enum';
 import fs from 'fs';
-import {getRandomInt} from "../utils";
-import {NameGenerator} from "../generators/name.generator";
-import {PhoneGenerator} from "../generators/phone.generator";
-import {LoremGenerator} from "../generators/lorem.generator";
+import { LogColor, getRandomInt } from '../utils';
+import { NameGenerator } from '../generators/name.generator';
+import { PhoneGenerator } from '../generators/phone.generator';
+import { LoremGenerator } from '../generators/lorem.generator';
 
 // eslint-disable-next-line no-shadow
 enum BasicTypeEnum {
@@ -23,6 +23,10 @@ export class FileGeneratorService {
   }
 
   constructor() {
+    this._dataModel.set('PermissionModel', {
+      id: 'number',
+      name: 'string   //@values["Сотрудники", "Пациенты", "Лекарства", "Методы Лечения", "Прайсинг", "Календарь"];',
+    });
     this._dataModel.set('File', {
       size: 'number',
       type: 'string',
@@ -30,21 +34,21 @@ export class FileGeneratorService {
     });
     this._dataModel.set('BloodTypeModel', {
       type: 'BloodTypeEnum',
-      rhFactor: 'RhesusFactor'
+      rhFactor: 'RhesusFactorEnum'
     });
     this._dataModel.set('ChronicDiseaseModel', {
       id: 'number',
-      name: 'string',
+      name: 'string   //@values[\'Атеросклероз\', \'Ишемическая Болезнь Сердца\', \'Хронический Миокардит\', \'Кардиомиопатия\'];',
       tags: 'TagModel[]',
       note: 'string'
     });
     this._dataModel.set('TagModel', {
       id: 'number',
-      name: 'string'
+      name: 'string   //@values[\'Врач\', \'Главрач\', \'Персонал\', \'Доцент\', \'Кандидат Наук\', \'Кладовщик\'];'
     });
     this._dataModel.set('AllergyModel', {
       id: 'number',
-      name: 'string',
+      name: 'string   //@values[\'Пыльца\', \'Латекс\', \'Химические Реактивы\', \'Медицинские Препараты\', \'Споры Грибков Или Плесени\'];',
       tags: 'TagModel[]',
       note: 'string'
     });
@@ -62,7 +66,7 @@ export class FileGeneratorService {
       email: 'string[]',
       messengerList: [
         {
-          name: 'string',
+          name: 'string     //@values[\'Facebook\', \'Instagram\', \'Telegram\', \'Viber\', \'VK\'];',
           link: 'string',
         }
       ],
@@ -75,37 +79,6 @@ export class FileGeneratorService {
       ]
     });
 
-    this._helper.set('boolean[]', [true, false]);
-    this._helper.set('number[]', [
-      1234567890,
-      4567899045,
-      7890123345,
-      6758493021,
-      3456745634,
-      9078789676,
-      5746546644,
-      3456543465
-    ]);
-    this._helper.set('any[]', [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      4567899045,
-      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      6758493021,
-      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      9078789676,
-      'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      3456543465
-    ])
-    this._helper.set('string[]', [
-      'Lorem ipsum dolor sit amet',
-      'Consectetur adipiscing elit',
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      'Ut enim ad minim veniam',
-      'Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      'Excepteur sint occaecat cupidatat non proident',
-      'Sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    ])
     this._helper.set('PermissionNameEnum', {
       GUEST: 'Guest',
       MANAGER: 'Manager',
@@ -124,7 +97,7 @@ export class FileGeneratorService {
       B: 'III',
       AB: 'IV'
     });
-    this._helper.set('RhesusFactor', {
+    this._helper.set('RhesusFactorEnum', {
       POSITIVE: '+',
       NEGATIVE: '-'
     });
@@ -141,7 +114,7 @@ export class FileGeneratorService {
    * @return {Promise<*>}
    */
   public generateOutputFile(fileName: string, fileBody: any): Promise<any> {
-    const OUTPUT_DIR = './dist/static/'
+    const OUTPUT_DIR = './output/'
     let fileExist = false;
     return new Promise((resolve, reject) => {
       fs.unlink(OUTPUT_DIR + fileName, err => {
@@ -170,7 +143,8 @@ export class FileGeneratorService {
     const modelEntries: [string, any|any[]][] = Object.entries(objectModel);
     const generalEntry = this.findGeneralEntry(modelEntries) // элемент помеченный символом @general (должен стать оправной точкой для генерации свего остального набора)
 
-    console.group('********************* START ********************')
+    console.log('{')
+    console.group('a: ********************* START ********************')
     console.log((isFirstLevel ? 'First' : '') + ` generateMockFormObject of ${loopCount} items. isArray: `);
     console.log('\n\tModel');
     console.table(modelEntries);
@@ -180,164 +154,96 @@ export class FileGeneratorService {
     console.table(generalEntry ? generalEntry : ['General Entry Not Found']);
 
     for (let i = 0; i < loopCount; i++) {
-      // const globalForIteration = this.getGlobalValueForCurrentIteration(templateSource, modelEntries);
       const pivotal: { key: string; value: any; marks: string[]}|null = this.getLocalValueForGeneralEntry(generalEntry);
-      console.group(`Iteration ${i + 1}, pivot: `, pivotal, templateSource);
+      console.groupCollapsed(`Iteration ${i + 1}, pivot: `, pivotal, templateSource);
       const param: any = {}
       modelEntries.forEach(([key, value]) => {
         const [typeDef, marks] = FileGeneratorService.getTypeAndMarks(value);
-        console.log(`* current step: ${key}`, typeDef, marks);
-        // если найден шаблон и среди шаблонов есть тот чьё имя указано в типе(typeDef) рассматриваемого параметра модели
-        if ((pivotal || templateSource) && this._helper.has(typeDef)) {
-          console.log(1);
-          if (pivotal && typeDef === pivotal.key) { // Точка привязки в приоритете
-            console.log('assign Pivotal Value For:', key, typeDef);
-            Object.assign(param, { [key]: pivotal.value })
-           } else if (templateSource) {
-            const rand = getRandomInt(0, templateSource.length)
-            console.log('assign Template Source For:', key, typeDef);
-            Object.assign(param, { [key]: templateSource[rand] })
-          }
+        // шаг 1. находим все типы с массивами => и приводим к единственному объекту, при этом помечаем как массив
+        const [singleTypeDef, isArray] = this.getTypeDefinitionFromArrayOrGenerics(typeDef);
+        console.log('*********************************************');
+        console.log(LogColor.FgMagenta, 'STEP::',
+          LogColor.FgYellow, 'key: ', LogColor.FgCyan, key,
+          LogColor.FgYellow, '\n\tarray: ', LogColor.FgCyan, isArray,
+          LogColor.FgYellow, '\n\ttype:', LogColor.FgCyan, singleTypeDef,
+          LogColor.FgYellow, '\n\tmarks:', LogColor.FgCyan, marks,
+          LogColor.Reset
+        );
+        if (this.isTuple(singleTypeDef)) {
+          console.log('\x1b[44m%s\x1b[0m', 'is Tuple')
+        }
+        const preferredValuesList: any[] = this.extractPreferredValueListMark(marks);
+        // шаг 2. начинаем анализ типов с последующим присвоением значений
+          // шаг 2.1 Если указан список значений \'@values[a, b, ... , n];\' то использовать эти значения
+        if (preferredValuesList && preferredValuesList.length) {
+          const valueFromPreferredList = this.generateValues(
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+            [() => FileGeneratorService.getRandomValueFromList(preferredValuesList)], key, isArray);
+          Object.assign(param, valueFromPreferredList);
         } else {
-          console.log(2);
-          switch (typeDef) {
+          // шаг 2.2 Если не указано иное из пункта 2.1, то пройти по списку типов и сгенерировать соответствующие значения
+          switch (singleTypeDef) {
             case 'boolean':
-              Object.assign(param, { [key]: getRandomInt(0,1) === 1 });
+              Object.assign(param, this.getRandomizedBooleanVariable(key, isArray));
               break;
             case 'number':
-              Object.assign(param, { [key]: i });
+              Object.assign(param, this.getRandomizedNumberVariable(key, isArray, i));
               break;
             case 'string':
-              switch (key) {
-                case 'login':
-                  Object.assign(param, { [key]: (pivotal ? pivotal.value.toLowerCase() : '') + '-' + i });
-                  break;
-                case 'password':
-                  Object.assign(param, {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-                    [key]: Buffer.from((pivotal ? pivotal.value.toLowerCase() : '') + '-' + i).toString('base64').replace(/=/gu, '')
-                  });
-                  break;
-                case 'firstName':
-                case 'lastName':
-                case 'middleName':
-                  const [lastName, firstName, middleName] = new NameGenerator().getFullName();
-                  Object.assign(param, { firstName });
-                  Object.assign(param, { lastName });
-                  Object.assign(param, { middleName });
-                  break;
-                case 'phone':
-                  console.log('<<<<<<<<<<<<<<<<', key, typeDef);
-                  Object.assign(param, { phone: new PhoneGenerator().getMobilePhone() });
-                  break;
-                case 'email':
-                  Object.assign(param, { email: 'example@example.com' });
-                  break;
-                default:
-                  Object.assign(param, { [key]: new LoremGenerator().getLoremIpsum() });
-                  break
-              }
+              Object.assign(param, this.getRandomizedStringVariable(key, pivotal, isArray, i));
+              break;
+            case 'any':
+              Object.assign(param, this.getRandomizedAnyVariable(key, isArray));
               break;
             default:
-              console.log('-------------------------------------------------------')
-              console.log('Generate Helper For Custom Or Array Type');
-              // Обработка оставшихся базовых типов "any[], string[], number[], boolean[]" а так же
-              // интерфейсов, итерфейсов[], {a: string, b:number} и [{a: string, b:number}] вместе с кортежами
-              // шаг 1. находим все типы с массивами => и приводим к единственному объекту, при этом помечаем как массив
-              let isArray = false;
-              let processedValue = typeDef;
-              if (key === 'phone' || key === 'email') {
-                console.log('<<<<<<<<<', key);
-              }
-              console.log('>>> type definition:', processedValue);
-              if (Array.isArray(typeDef) && !this.isTuple(typeDef) || FileGeneratorService.isCustomTypeArray(typeDef)) {
-                console.log('>>> is array type');
-                processedValue = this.getModelFormArray(typeDef);
-                processedValue = processedValue ? processedValue : typeDef;
-                isArray = true;
+              if (this.isTuple(singleTypeDef)) {
+                Object.assign(param, this.getRandomizedTupleVariable(key, singleTypeDef, isArray))
               } else {
-                console.log('>>> is single type');
-                if (this.isTuple(typeDef)) {
-                  console.log('>>> is Tuple');
-                }
-              }
-
-              // is custom type array and has no helper => generate helper
-              if (isArray && typeof processedValue === 'object' && !this._helper.has(key)) { // Тип объявлен как [ {param1: type, param2: type} ]
-                console.log('1 ****', key, processedValue);
-                const temp = this.generateMockFormObjectModel(processedValue, false);
-                this._helper.set(key, temp);
-              }
-              // is basic type array and no helper => generate helper
-              if (typeof processedValue === 'string' && !this._helper.has(key)) { // Указанный тип это строка 'string' | 'CustomType'
-                if (Object.values(BasicTypeEnum).some(val => val === processedValue)) { // Указанный тип является базовым string | number | boolean | any
-                  // TODO: использовать заготовленный хелпер this._helper для генерации
-                  //  одиночного значения или массива в зависимости от флага isArray
-                  console.log('2.1 ****', key, processedValue);
-                  if (key === 'phone' || key === 'email') {
-                    console.log('<><><><><>', key)
+                console.log('/////', 1)
+                if (!this._helper.has(singleTypeDef)) {
+                  console.log('/////', 2)
+                  // TODO: create new helper for custom type
+                  console.log(
+                    LogColor.FgMagenta, 'CUSTOM TYPE::', LogColor.FgYellow, key,
+                    LogColor.FgMagenta, 'type model', LogColor.FgCyan, singleTypeDef,
+                    LogColor.Reset
+                  );
+                  if (typeof singleTypeDef === 'object') {
+                    console.log('1 **** For Object', LogColor.FgYellow, key, LogColor.Reset);
+                    const temp = this.generateMockFormObjectModel(singleTypeDef, false);
+                    this._helper.set(key, temp);
                   }
-                  Object.assign(param, { [key]: this.generateArrayFromHelper(`${processedValue}[]`) });
-                } else {
-                  // TODO: так как тип не является простым, то необходимо проверить
-                  //  интерфейс(описание) данного типа в мапе _dataModel. При обнаружении
-                  //  декларации интерфейса вызвать метод this.generateMockFormObjectModel(value[0], false);
-                  console.log('2.2 ****', key, processedValue);
-                  if (!this._dataModel.has(processedValue)) {
-                    throw new Error(`model for key "${processedValue}" not found`);
+                  if (typeof singleTypeDef === 'string') {
+                    console.log('2 **** For String', LogColor.FgYellow, key, LogColor.Reset);
+                    if (!this._dataModel.has(singleTypeDef)) {
+                      throw new Error(`model for key "${singleTypeDef}" not found`);
+                    }
+                    console.log(`generate helper [${key}] for `, singleTypeDef)
+                    const temp = this.generateMockFormObjectModel(this._dataModel.get(singleTypeDef), false);
+                    this._helper.set(key, temp);
                   }
-                  console.log(`generate helper [${key}] for `, processedValue)
-                  const temp = this.generateMockFormObjectModel(this._dataModel.get(processedValue), false);
-                  this._helper.set(key, temp);
-                }
-              }
-              // console.log('>>> single value: ', processedValue);
-              // console.log('-------------------------------------------------------')
-              if (this._helper.has(key)) {
-                const a = this.generateArrayFromHelper(key);
-                const result = isArray ? a : a[getRandomInt(0, a.length)]
-                if (key === 'contact') {
-                  console.log('set param for CONTACT', isArray);
-                  console.log(result);
-                }
-                Object.assign(param, { [key]: result });
-              }
-
-/*
-              if (this.isEntryPresentedAsSetOfProperties(key, typeDefinition)
-                || FileGeneratorService.isBasicTypeArray(value)
-                || FileGeneratorService.isCustomTypeArray(value)
-              ) {
-                if (this.isEntryPresentedAsSetOfProperties(key, typeDefinition) && !this.isTuple(typeDefinition)) {
-                  console.log(`generate helper [${key}] for `, value[0])
-                  const temp = this.generateMockFormObjectModel(value[0], false);
-                  this._helper.set(key, temp);
-                }
-                if (FileGeneratorService.isBasicTypeArray(value)) {
-                  Object.assign(param, { [key]: this.generateArrayFromHelper(value) });
-                }
-                if (FileGeneratorService.isCustomTypeArray(value)) {
-                  console.log('Custom type Array', value);
+                } else if (templateSource) {
+                  this._helper.set(key, templateSource);
+                } else if (pivotal && pivotal.key === key) {
+                  Object.assign(param, { [key]: pivotal.value });
                 }
                 if (this._helper.has(key)) {
-                  Object.assign(param, { [key]: this.generateArrayFromHelper(key) });
+                  const a = this.generateArrayFromHelper(key);
+                  console.log(a);
+                  const result = isArray ? a : a[getRandomInt(0, a.length)]
+                  Object.assign(param, {[key]: result});
                 }
-              } else {
-                console.log('other', key, value);
               }
-
- */
               break;
           }
         }
-        console.warn('step result', param);
       });
       resultList.push(param);
       console.groupEnd();
     }
-    // console.log('****** result List', generatedItemsList);
-    console.log('************************  end  *****************************');
+    console.log('a: ************************  end  *****************************');
     console.groupEnd();
+    console.log('}')
     return resultList;
   }
 
@@ -366,6 +272,251 @@ export class FileGeneratorService {
 
   /** Private **/
 
+  /**
+   * Generate a single or multiple values in case of array flag by use a value generators
+   * @param {callback} generatorsList - list of value generator functions
+   * @param {string} key - name of generated value
+   * @param {boolean} isArray - singe or multiple value flag
+   */
+  private generateValues(generatorsList: any[],key: string, isArray: boolean): {[key:string]: any} {
+    let stepValue = [];
+    if (isArray) {
+      const rLength = getRandomInt(0, 10);
+      const arr: any[] = [];
+      for (let i = 0; i < rLength; i++) {
+        stepValue = [];
+        generatorsList.forEach((generator: any) => {
+          // @ts-ignore
+          stepValue.push(generator())
+        });
+        arr.push(stepValue.length !== 1 ? stepValue : stepValue[0]);
+      }
+      return { [key]: arr };
+    }
+    generatorsList.forEach(generator => {
+      // @ts-ignore
+      stepValue.push(generator())
+    });
+    return { [key]: stepValue.length !== 1 ? stepValue : stepValue[0] }
+  }
+
+  /**
+   * set value or value list to object
+   * @param key
+   * @param isArray
+   */
+  private getRandomizedNumberVariable(key: string, isArray: boolean, index: number): {[key:string]:number|number[]} {
+    return this.generateValues([() => key === 'id' ? index : getRandomInt(10000, 99999999)], key, isArray);
+  }
+
+  private getRandomizedBooleanVariable(key: string, isArray: boolean): {[key:string]:boolean|boolean[]} {
+    return this.generateValues([() => Boolean(getRandomInt(0, 1))], key, isArray);
+  }
+
+  private getRandomizedAnyVariable(key: string, isArray: boolean): {[key: string]: any|any[]} {
+    const generator = (): any => {
+      const randomValueType = getRandomInt(0, 3);
+      if (randomValueType === 0) {
+        return Boolean(getRandomInt(0, 1))
+      }
+      if (randomValueType === 1) {
+        return getRandomInt(10000, 99999999)
+      }
+      if (randomValueType === 2) {
+        return new LoremGenerator().getLoremIpsum()
+      }
+      return { id: 1, ind: 2, name: 'Джорданий Йованович' }
+    };
+
+    return this.generateValues([generator], key, isArray)
+  }
+
+  private getRandomizedTupleVariable(key: string, tuple: any[], isArray: boolean): {[key:string]:any[]} {
+    const generatorFuncList: any[] = [];
+    let generatorFunc;
+    tuple.forEach(item => {
+        switch (item) {
+          case 'boolean':
+            // @ts-ignore
+            generatorFunc = function () { return Boolean(getRandomInt(0, 1)); }
+            break;
+          case 'number':
+            generatorFunc = function () { return getRandomInt(10000, 99999999); }
+            break;
+          case 'string':
+            // @ts-ignore
+            generatorFunc = function () { return new LoremGenerator().getLoremIpsum(); }
+            break;
+          case 'any':
+            // @ts-ignore
+            generatorFunc = function () {
+              const randomValueType = getRandomInt(0, 3);
+              if (randomValueType === 0) {
+                return Boolean(getRandomInt(0, 1));
+              }
+              if (randomValueType === 1) {
+                return getRandomInt(10000, 99999999);
+              }
+              if (randomValueType === 2) {
+                return new LoremGenerator().getLoremIpsum();
+              }
+              return { id: 1, ind: 2, name: 'Джорданий Йованович' };
+            }
+            break;
+          default:
+            // TODO: (Custom Type): generate and use helper
+            break;
+        }
+        generatorFuncList.push(generatorFunc);
+      });
+
+    return this.generateValues(generatorFuncList, key, isArray)
+  }
+
+  private getRandomizedStringVariable(key: string, pivot: any, isArray: boolean, index: number): {[key: string]: any} {
+    let generator;
+    const param = {}
+    switch (key) {
+        case 'id':
+          generator = function () {
+            return index;
+          }
+          break;
+        case 'login':
+        case 'password':
+          generator = function () {
+            return (pivot ? pivot.value.toLowerCase() : 'login') + '-' + index
+          };
+          break;
+        case 'photo':
+          generator = function () {
+            return 'data:image/png;base64,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';
+          }
+          break;
+        case 'birthday':
+          generator = function () {
+            return new Date(1979).toISOString();
+          }
+          break;
+        case 'expirationDate':
+          generator = function () {
+            const now = new Date();
+            return new Date(now.getFullYear(), getRandomInt(now.getMonth(), 14), getRandomInt(0, 31)).toISOString();
+          }
+          break;
+        case 'startDate':
+          generator = function () {
+            const now = new Date();
+            return new Date(now.getFullYear(), getRandomInt(0, now.getMonth()), getRandomInt(0, now.getDate())).toISOString();
+          }
+          break;
+        case 'date':
+        case 'finishDate':
+        case 'endDate':
+          generator = function () {
+            return new Date().toISOString();
+          }
+          break;
+        case 'firstName':
+        case 'lastName':
+        case 'middleName':
+        case 'gender':
+          generator = function () {
+            return new NameGenerator().getFullName();
+          }
+          break;
+        case 'phone':
+          generator = function () {
+            return new PhoneGenerator().getMobilePhone();
+          }
+          break;
+        case 'email':
+          generator = function () {
+            return 'example@example.com';
+          };
+          break
+        default:
+          generator = function () {
+            return new LoremGenerator().getLoremIpsum();
+          }
+          break
+      }
+
+    if (this.isFullNameOrGender(key)) {
+      const a = this.generateValues([() => this.getFullNameAndGender(generator)], key, isArray)
+      const values = Object.values(a);
+      values.forEach((valueGroup: {firstName: string; lastName: string; middleName: string; gender: string}) => {
+        for (const aKey in valueGroup) {
+          Object.assign(param, { [aKey]: valueGroup[aKey] });
+        }
+      });
+      return param;
+    }
+    return this.generateValues([generator], key, isArray);
+  }
+
+  /**
+   * Extract list of preferred values form marks list.
+   * Preferred Values Should Be marked as '@values[...];' in comments
+   * @example:
+   *  name: \'string; //... @values['John', 'David', 'Sally']; ...\'
+   *  -> will be parsed and pushed to mark list as marks = [ \'@values['John', 'David', 'Sally'];\' ]
+   *  -> current function returns an array of [ 'John', 'David', 'Sally' ]
+   * @param {Array<*>} marks
+   * @returns {Array<*>} list of preferred values or empty list
+   */
+  private extractPreferredValueListMark(marks: any[]): any[] {
+      if (!marks) { return []; }
+      const valueMarks: string = marks.find(mark => typeof mark === 'string' && mark.includes('@values'))
+      if (valueMarks) {
+        const arr = valueMarks.replace(/@values\[|\]|'|"|;/gu, '').split(',');
+        return arr.map(item => (typeof item === 'string' ? item.trim() : item));
+      }
+      return []
+  }
+
+
+  /**
+   * Get Random Value From List
+   * @param {Array<*>} itemList
+   * @returns {*} item
+   */
+  private static getRandomValueFromList(itemList: any[]): any {
+    if (!itemList) { return ''; }
+    const randomInd = getRandomInt(0, itemList.length);
+    return itemList[randomInd];
+  }
+
+  private isFullNameOrGender(key): boolean {
+    return key === 'firstName' || key === 'lastName' || key === 'middleName' || key === 'gender'
+  }
+
+  private getFullNameAndGender(generatorFunc: any): any {
+    const result = {}
+    const [lastName, firstName, middleName]: [string, string, string] = generatorFunc();
+    const gender = new NameGenerator().isMale(firstName) ? 'Мужской' : 'Женский'
+    Object.assign(result, { firstName });
+    Object.assign(result, { lastName });
+    Object.assign(result, { middleName });
+    Object.assign(result, { gender });
+    return result;
+  }
+
+  /**
+   * Возвратить описание модели и флаг массива из массива заданного как дженерик \'Array<T>\'
+   * либо как строка \'TypeDefinition[]\',
+   * либо как кортеж (Tuple) \'[type, type, ..., type]\', а так же вернуть исходное
+   * описание модели если оно не заданно как массив
+   * @param {string|object[]} typeDefinition
+   * @return {[string|*, boolean]} где первый параметр - описание модели а второй - является ли переданное значение массивом
+   */
+  private getTypeDefinitionFromArrayOrGenerics(typeDefinition: string|any[]): [string|any, boolean] {
+    if (Array.isArray(typeDefinition) && !this.isTuple(typeDefinition) || FileGeneratorService.isCustomTypeArray(typeDefinition)) {
+      return [ this.getModelFormArray(typeDefinition), true ];
+    }
+    return [ typeDefinition, false ];
+  }
+
 
   /**
    * Проверить является ли исследуемый тип кортежем (tuple)
@@ -377,22 +528,6 @@ export class FileGeneratorService {
    */
   private isTuple(value: string|any[]): boolean {
     return Array.isArray(value) && value.length > 1 && !(value[0] instanceof Object);
-  }
-
-  /**
-   *
-   * @param {Array<*>} helper
-   * @param {[string, *]} entry
-   */
-  private getGlobalValueForCurrentIteration(helper: any[]|null, entry: [string, any][]): any {
-    if (helper) {
-      entry.some(([, value]) => {
-        if (this._helper.has(value) && helper && value === 'RoleEnum') {
-          return helper[getRandomInt(0, helper.length)];
-        }
-      });
-    }
-    return null;
   }
 
   /**
@@ -479,11 +614,6 @@ export class FileGeneratorService {
     return [value, null];
   }
 
-  private isEntryPresentedAsSetOfProperties(key: string, value: string|any[]): boolean {
-    return Array.isArray(value) && !this._helper.has(key)
-  }
-
-
   /**
    * Get Calculated Loop Count (If generated helper exist)
    * Or Get 10 as constant (if generated helper not exist)
@@ -494,35 +624,22 @@ export class FileGeneratorService {
     return generatedHelper && generatedHelper?.length ? Object.values(generatedHelper).length : 10;
   }
 
-
   /**
    * Generate an array of random items count from generated helper
    * @param {string} key - generated helper name
    * @return {Array} resultList
    */
   private generateArrayFromHelper(key: string): Array<any> {
-    const generatedHelper = this._helper.get(key);
+    let generatedHelper = this._helper.get(key);
+    if (generatedHelper && !Array.isArray(generatedHelper)) {
+      generatedHelper = Object.values(generatedHelper);
+    }
     const countOfItems = getRandomInt(1, generatedHelper.length);
     const itemList: Array<any> = []
     for (let n = 0; n <= countOfItems; n++) {
       const rand = getRandomInt(1, generatedHelper.length);
       if (!itemList.includes(generatedHelper[rand])) {
         itemList.push(generatedHelper[rand]);
-      }
-    }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return itemList;
-  }
-
-
-  private generateArrayFromType(type: string): Array<boolean|string|number|any> {
-    const itemList: Array<boolean|string|number|any> = [];
-    const values = this._helper.get(type);
-    const countOfItems = getRandomInt(1, values.length);
-    for (let n = 0; n <= countOfItems; n++) {
-      const rand = getRandomInt(0, values.length - 1);
-      if (!itemList.includes(values[rand])) {
-        itemList.push(values[rand]);
       }
     }
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return

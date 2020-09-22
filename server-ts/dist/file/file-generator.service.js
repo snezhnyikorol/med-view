@@ -38,6 +38,10 @@ var FileGeneratorService = (function () {
         this.blockIdent = '  ';
         this._dataModel = new Map();
         this._helper = new Map();
+        this._dataModel.set('PermissionModel', {
+            id: 'number',
+            name: 'string   //@values["Сотрудники", "Пациенты", "Лекарства", "Методы Лечения", "Прайсинг", "Календарь"];',
+        });
         this._dataModel.set('File', {
             size: 'number',
             type: 'string',
@@ -45,21 +49,21 @@ var FileGeneratorService = (function () {
         });
         this._dataModel.set('BloodTypeModel', {
             type: 'BloodTypeEnum',
-            rhFactor: 'RhesusFactor'
+            rhFactor: 'RhesusFactorEnum'
         });
         this._dataModel.set('ChronicDiseaseModel', {
             id: 'number',
-            name: 'string',
+            name: 'string   //@values[\'Атеросклероз\', \'Ишемическая Болезнь Сердца\', \'Хронический Миокардит\', \'Кардиомиопатия\'];',
             tags: 'TagModel[]',
             note: 'string'
         });
         this._dataModel.set('TagModel', {
             id: 'number',
-            name: 'string'
+            name: 'string   //@values[\'Врач\', \'Главрач\', \'Персонал\', \'Доцент\', \'Кандидат Наук\', \'Кладовщик\'];'
         });
         this._dataModel.set('AllergyModel', {
             id: 'number',
-            name: 'string',
+            name: 'string   //@values[\'Пыльца\', \'Латекс\', \'Химические Реактивы\', \'Медицинские Препараты\', \'Споры Грибков Или Плесени\'];',
             tags: 'TagModel[]',
             note: 'string'
         });
@@ -77,7 +81,7 @@ var FileGeneratorService = (function () {
             email: 'string[]',
             messengerList: [
                 {
-                    name: 'string',
+                    name: 'string     //@values[\'Facebook\', \'Instagram\', \'Telegram\', \'Viber\', \'VK\'];',
                     link: 'string',
                 }
             ],
@@ -89,37 +93,6 @@ var FileGeneratorService = (function () {
                 }
             ]
         });
-        this._helper.set('boolean[]', [true, false]);
-        this._helper.set('number[]', [
-            1234567890,
-            4567899045,
-            7890123345,
-            6758493021,
-            3456745634,
-            9078789676,
-            5746546644,
-            3456543465
-        ]);
-        this._helper.set('any[]', [
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            4567899045,
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            6758493021,
-            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            9078789676,
-            'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            3456543465
-        ]);
-        this._helper.set('string[]', [
-            'Lorem ipsum dolor sit amet',
-            'Consectetur adipiscing elit',
-            'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            'Ut enim ad minim veniam',
-            'Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            'Excepteur sint occaecat cupidatat non proident',
-            'Sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        ]);
         this._helper.set('PermissionNameEnum', {
             GUEST: 'Guest',
             MANAGER: 'Manager',
@@ -138,7 +111,7 @@ var FileGeneratorService = (function () {
             B: 'III',
             AB: 'IV'
         });
-        this._helper.set('RhesusFactor', {
+        this._helper.set('RhesusFactorEnum', {
             POSITIVE: '+',
             NEGATIVE: '-'
         });
@@ -154,7 +127,7 @@ var FileGeneratorService = (function () {
         this._helper.set(key, value);
     };
     FileGeneratorService.prototype.generateOutputFile = function (fileName, fileBody) {
-        var OUTPUT_DIR = './dist/static/';
+        var OUTPUT_DIR = './output/';
         var fileExist = false;
         return new Promise(function (resolve, reject) {
             fs_1.default.unlink(OUTPUT_DIR + fileName, function (err) {
@@ -176,7 +149,8 @@ var FileGeneratorService = (function () {
         var loopCount = isFirstLevel ? 1 : FileGeneratorService.getLoopCount(templateSource);
         var modelEntries = Object.entries(objectModel);
         var generalEntry = this.findGeneralEntry(modelEntries);
-        console.group('********************* START ********************');
+        console.log('{');
+        console.group('a: ********************* START ********************');
         console.log((isFirstLevel ? 'First' : '') + (" generateMockFormObject of " + loopCount + " items. isArray: "));
         console.log('\n\tModel');
         console.table(modelEntries);
@@ -186,121 +160,77 @@ var FileGeneratorService = (function () {
         console.table(generalEntry ? generalEntry : ['General Entry Not Found']);
         var _loop_1 = function (i) {
             var pivotal = this_1.getLocalValueForGeneralEntry(generalEntry);
-            console.group("Iteration " + (i + 1) + ", pivot: ", pivotal, templateSource);
+            console.groupCollapsed("Iteration " + (i + 1) + ", pivot: ", pivotal, templateSource);
             var param = {};
             modelEntries.forEach(function (_a) {
-                var _b, _c, _d, _e, _f, _g, _h, _j, _k;
-                var _l = __read(_a, 2), key = _l[0], value = _l[1];
-                var _m = __read(FileGeneratorService.getTypeAndMarks(value), 2), typeDef = _m[0], marks = _m[1];
-                console.log("* current step: " + key, typeDef, marks);
-                if ((pivotal || templateSource) && _this._helper.has(typeDef)) {
-                    console.log(1);
-                    if (pivotal && typeDef === pivotal.key) {
-                        console.log('assign Pivotal Value For:', key, typeDef);
-                        Object.assign(param, (_b = {}, _b[key] = pivotal.value, _b));
-                    }
-                    else if (templateSource) {
-                        var rand = utils_1.getRandomInt(0, templateSource.length);
-                        console.log('assign Template Source For:', key, typeDef);
-                        Object.assign(param, (_c = {}, _c[key] = templateSource[rand], _c));
-                    }
+                var _b, _c;
+                var _d = __read(_a, 2), key = _d[0], value = _d[1];
+                var _e = __read(FileGeneratorService.getTypeAndMarks(value), 2), typeDef = _e[0], marks = _e[1];
+                var _f = __read(_this.getTypeDefinitionFromArrayOrGenerics(typeDef), 2), singleTypeDef = _f[0], isArray = _f[1];
+                console.log('*********************************************');
+                console.log(utils_1.LogColor.FgMagenta, 'STEP::', utils_1.LogColor.FgYellow, 'key: ', utils_1.LogColor.FgCyan, key, utils_1.LogColor.FgYellow, '\n\tarray: ', utils_1.LogColor.FgCyan, isArray, utils_1.LogColor.FgYellow, '\n\ttype:', utils_1.LogColor.FgCyan, singleTypeDef, utils_1.LogColor.FgYellow, '\n\tmarks:', utils_1.LogColor.FgCyan, marks, utils_1.LogColor.Reset);
+                if (_this.isTuple(singleTypeDef)) {
+                    console.log('\x1b[44m%s\x1b[0m', 'is Tuple');
+                }
+                var preferredValuesList = _this.extractPreferredValueListMark(marks);
+                if (preferredValuesList && preferredValuesList.length) {
+                    var valueFromPreferredList = _this.generateValues([function () { return FileGeneratorService.getRandomValueFromList(preferredValuesList); }], key, isArray);
+                    Object.assign(param, valueFromPreferredList);
                 }
                 else {
-                    console.log(2);
-                    switch (typeDef) {
+                    switch (singleTypeDef) {
                         case 'boolean':
-                            Object.assign(param, (_d = {}, _d[key] = utils_1.getRandomInt(0, 1) === 1, _d));
+                            Object.assign(param, _this.getRandomizedBooleanVariable(key, isArray));
                             break;
                         case 'number':
-                            Object.assign(param, (_e = {}, _e[key] = i, _e));
+                            Object.assign(param, _this.getRandomizedNumberVariable(key, isArray, i));
                             break;
                         case 'string':
-                            switch (key) {
-                                case 'login':
-                                    Object.assign(param, (_f = {}, _f[key] = (pivotal ? pivotal.value.toLowerCase() : '') + '-' + i, _f));
-                                    break;
-                                case 'password':
-                                    Object.assign(param, (_g = {},
-                                        _g[key] = Buffer.from((pivotal ? pivotal.value.toLowerCase() : '') + '-' + i).toString('base64').replace(/=/gu, ''),
-                                        _g));
-                                    break;
-                                case 'firstName':
-                                case 'lastName':
-                                case 'middleName':
-                                    var _o = __read(new name_generator_1.NameGenerator().getFullName(), 3), lastName = _o[0], firstName = _o[1], middleName = _o[2];
-                                    Object.assign(param, { firstName: firstName });
-                                    Object.assign(param, { lastName: lastName });
-                                    Object.assign(param, { middleName: middleName });
-                                    break;
-                                case 'phone':
-                                    console.log('<<<<<<<<<<<<<<<<', key, typeDef);
-                                    Object.assign(param, { phone: new phone_generator_1.PhoneGenerator().getMobilePhone() });
-                                    break;
-                                case 'email':
-                                    Object.assign(param, { email: 'example@example.com' });
-                                    break;
-                                default:
-                                    Object.assign(param, (_h = {}, _h[key] = new lorem_generator_1.LoremGenerator().getLoremIpsum(), _h));
-                                    break;
-                            }
+                            Object.assign(param, _this.getRandomizedStringVariable(key, pivotal, isArray, i));
+                            break;
+                        case 'any':
+                            Object.assign(param, _this.getRandomizedAnyVariable(key, isArray));
                             break;
                         default:
-                            console.log('-------------------------------------------------------');
-                            console.log('Generate Helper For Custom Or Array Type');
-                            var isArray = false;
-                            var processedValue_1 = typeDef;
-                            if (key === 'phone' || key === 'email') {
-                                console.log('<<<<<<<<<', key);
-                            }
-                            console.log('>>> type definition:', processedValue_1);
-                            if (Array.isArray(typeDef) && !_this.isTuple(typeDef) || FileGeneratorService.isCustomTypeArray(typeDef)) {
-                                console.log('>>> is array type');
-                                processedValue_1 = _this.getModelFormArray(typeDef);
-                                processedValue_1 = processedValue_1 ? processedValue_1 : typeDef;
-                                isArray = true;
+                            if (_this.isTuple(singleTypeDef)) {
+                                Object.assign(param, _this.getRandomizedTupleVariable(key, singleTypeDef, isArray));
                             }
                             else {
-                                console.log('>>> is single type');
-                                if (_this.isTuple(typeDef)) {
-                                    console.log('>>> is Tuple');
-                                }
-                            }
-                            if (isArray && typeof processedValue_1 === 'object' && !_this._helper.has(key)) {
-                                console.log('1 ****', key, processedValue_1);
-                                var temp = _this.generateMockFormObjectModel(processedValue_1, false);
-                                _this._helper.set(key, temp);
-                            }
-                            if (typeof processedValue_1 === 'string' && !_this._helper.has(key)) {
-                                if (Object.values(BasicTypeEnum).some(function (val) { return val === processedValue_1; })) {
-                                    console.log('2.1 ****', key, processedValue_1);
-                                    if (key === 'phone' || key === 'email') {
-                                        console.log('<><><><><>', key);
+                                console.log('/////', 1);
+                                if (!_this._helper.has(singleTypeDef)) {
+                                    console.log('/////', 2);
+                                    console.log(utils_1.LogColor.FgMagenta, 'CUSTOM TYPE::', utils_1.LogColor.FgYellow, key, utils_1.LogColor.FgMagenta, 'type model', utils_1.LogColor.FgCyan, singleTypeDef, utils_1.LogColor.Reset);
+                                    if (typeof singleTypeDef === 'object') {
+                                        console.log('1 **** For Object', utils_1.LogColor.FgYellow, key, utils_1.LogColor.Reset);
+                                        var temp = _this.generateMockFormObjectModel(singleTypeDef, false);
+                                        _this._helper.set(key, temp);
                                     }
-                                    Object.assign(param, (_j = {}, _j[key] = _this.generateArrayFromHelper(processedValue_1 + "[]"), _j));
-                                }
-                                else {
-                                    console.log('2.2 ****', key, processedValue_1);
-                                    if (!_this._dataModel.has(processedValue_1)) {
-                                        throw new Error("model for key \"" + processedValue_1 + "\" not found");
+                                    if (typeof singleTypeDef === 'string') {
+                                        console.log('2 **** For String', utils_1.LogColor.FgYellow, key, utils_1.LogColor.Reset);
+                                        if (!_this._dataModel.has(singleTypeDef)) {
+                                            throw new Error("model for key \"" + singleTypeDef + "\" not found");
+                                        }
+                                        console.log("generate helper [" + key + "] for ", singleTypeDef);
+                                        var temp = _this.generateMockFormObjectModel(_this._dataModel.get(singleTypeDef), false);
+                                        _this._helper.set(key, temp);
                                     }
-                                    console.log("generate helper [" + key + "] for ", processedValue_1);
-                                    var temp = _this.generateMockFormObjectModel(_this._dataModel.get(processedValue_1), false);
-                                    _this._helper.set(key, temp);
                                 }
-                            }
-                            if (_this._helper.has(key)) {
-                                var a = _this.generateArrayFromHelper(key);
-                                var result = isArray ? a : a[utils_1.getRandomInt(0, a.length)];
-                                if (key === 'contact') {
-                                    console.log('set param for CONTACT', isArray);
-                                    console.log(result);
+                                else if (templateSource) {
+                                    _this._helper.set(key, templateSource);
                                 }
-                                Object.assign(param, (_k = {}, _k[key] = result, _k));
+                                else if (pivotal && pivotal.key === key) {
+                                    Object.assign(param, (_b = {}, _b[key] = pivotal.value, _b));
+                                }
+                                if (_this._helper.has(key)) {
+                                    var a = _this.generateArrayFromHelper(key);
+                                    console.log(a);
+                                    var result = isArray ? a : a[utils_1.getRandomInt(0, a.length)];
+                                    Object.assign(param, (_c = {}, _c[key] = result, _c));
+                                }
                             }
                             break;
                     }
                 }
-                console.warn('step result', param);
             });
             resultList.push(param);
             console.groupEnd();
@@ -309,8 +239,9 @@ var FileGeneratorService = (function () {
         for (var i = 0; i < loopCount; i++) {
             _loop_1(i);
         }
-        console.log('************************  end  *****************************');
+        console.log('a: ************************  end  *****************************');
         console.groupEnd();
+        console.log('}');
         return resultList;
     };
     FileGeneratorService.prototype.findGeneratedHelper = function (objectModel) {
@@ -332,20 +263,205 @@ var FileGeneratorService = (function () {
         }
         return null;
     };
-    FileGeneratorService.prototype.isTuple = function (value) {
-        return Array.isArray(value) && value.length > 1 && !(value[0] instanceof Object);
+    FileGeneratorService.prototype.generateValues = function (generatorsList, key, isArray) {
+        var _a, _b;
+        var stepValue = [];
+        if (isArray) {
+            var rLength = utils_1.getRandomInt(0, 10);
+            var arr = [];
+            for (var i = 0; i < rLength; i++) {
+                stepValue = [];
+                generatorsList.forEach(function (generator) {
+                    stepValue.push(generator());
+                });
+                arr.push(stepValue.length !== 1 ? stepValue : stepValue[0]);
+            }
+            return _a = {}, _a[key] = arr, _a;
+        }
+        generatorsList.forEach(function (generator) {
+            stepValue.push(generator());
+        });
+        return _b = {}, _b[key] = stepValue.length !== 1 ? stepValue : stepValue[0], _b;
     };
-    FileGeneratorService.prototype.getGlobalValueForCurrentIteration = function (helper, entry) {
+    FileGeneratorService.prototype.getRandomizedNumberVariable = function (key, isArray, index) {
+        return this.generateValues([function () { return key === 'id' ? index : utils_1.getRandomInt(10000, 99999999); }], key, isArray);
+    };
+    FileGeneratorService.prototype.getRandomizedBooleanVariable = function (key, isArray) {
+        return this.generateValues([function () { return Boolean(utils_1.getRandomInt(0, 1)); }], key, isArray);
+    };
+    FileGeneratorService.prototype.getRandomizedAnyVariable = function (key, isArray) {
+        var generator = function () {
+            var randomValueType = utils_1.getRandomInt(0, 3);
+            if (randomValueType === 0) {
+                return Boolean(utils_1.getRandomInt(0, 1));
+            }
+            if (randomValueType === 1) {
+                return utils_1.getRandomInt(10000, 99999999);
+            }
+            if (randomValueType === 2) {
+                return new lorem_generator_1.LoremGenerator().getLoremIpsum();
+            }
+            return { id: 1, ind: 2, name: 'Джорданий Йованович' };
+        };
+        return this.generateValues([generator], key, isArray);
+    };
+    FileGeneratorService.prototype.getRandomizedTupleVariable = function (key, tuple, isArray) {
+        var generatorFuncList = [];
+        var generatorFunc;
+        tuple.forEach(function (item) {
+            switch (item) {
+                case 'boolean':
+                    generatorFunc = function () { return Boolean(utils_1.getRandomInt(0, 1)); };
+                    break;
+                case 'number':
+                    generatorFunc = function () { return utils_1.getRandomInt(10000, 99999999); };
+                    break;
+                case 'string':
+                    generatorFunc = function () { return new lorem_generator_1.LoremGenerator().getLoremIpsum(); };
+                    break;
+                case 'any':
+                    generatorFunc = function () {
+                        var randomValueType = utils_1.getRandomInt(0, 3);
+                        if (randomValueType === 0) {
+                            return Boolean(utils_1.getRandomInt(0, 1));
+                        }
+                        if (randomValueType === 1) {
+                            return utils_1.getRandomInt(10000, 99999999);
+                        }
+                        if (randomValueType === 2) {
+                            return new lorem_generator_1.LoremGenerator().getLoremIpsum();
+                        }
+                        return { id: 1, ind: 2, name: 'Джорданий Йованович' };
+                    };
+                    break;
+                default:
+                    break;
+            }
+            generatorFuncList.push(generatorFunc);
+        });
+        return this.generateValues(generatorFuncList, key, isArray);
+    };
+    FileGeneratorService.prototype.getRandomizedStringVariable = function (key, pivot, isArray, index) {
         var _this = this;
-        if (helper) {
-            entry.some(function (_a) {
-                var _b = __read(_a, 2), value = _b[1];
-                if (_this._helper.has(value) && helper && value === 'RoleEnum') {
-                    return helper[utils_1.getRandomInt(0, helper.length)];
+        var generator;
+        var param = {};
+        switch (key) {
+            case 'id':
+                generator = function () {
+                    return index;
+                };
+                break;
+            case 'login':
+            case 'password':
+                generator = function () {
+                    return (pivot ? pivot.value.toLowerCase() : 'login') + '-' + index;
+                };
+                break;
+            case 'photo':
+                generator = function () {
+                    return 'data:image/png;base64,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';
+                };
+                break;
+            case 'birthday':
+                generator = function () {
+                    return new Date(1979).toISOString();
+                };
+                break;
+            case 'expirationDate':
+                generator = function () {
+                    var now = new Date();
+                    return new Date(now.getFullYear(), utils_1.getRandomInt(now.getMonth(), 14), utils_1.getRandomInt(0, 31)).toISOString();
+                };
+                break;
+            case 'startDate':
+                generator = function () {
+                    var now = new Date();
+                    return new Date(now.getFullYear(), utils_1.getRandomInt(0, now.getMonth()), utils_1.getRandomInt(0, now.getDate())).toISOString();
+                };
+                break;
+            case 'date':
+            case 'finishDate':
+            case 'endDate':
+                generator = function () {
+                    return new Date().toISOString();
+                };
+                break;
+            case 'firstName':
+            case 'lastName':
+            case 'middleName':
+            case 'gender':
+                generator = function () {
+                    return new name_generator_1.NameGenerator().getFullName();
+                };
+                break;
+            case 'phone':
+                generator = function () {
+                    return new phone_generator_1.PhoneGenerator().getMobilePhone();
+                };
+                break;
+            case 'email':
+                generator = function () {
+                    return 'example@example.com';
+                };
+                break;
+            default:
+                generator = function () {
+                    return new lorem_generator_1.LoremGenerator().getLoremIpsum();
+                };
+                break;
+        }
+        if (this.isFullNameOrGender(key)) {
+            var a = this.generateValues([function () { return _this.getFullNameAndGender(generator); }], key, isArray);
+            var values = Object.values(a);
+            values.forEach(function (valueGroup) {
+                var _a;
+                for (var aKey in valueGroup) {
+                    Object.assign(param, (_a = {}, _a[aKey] = valueGroup[aKey], _a));
                 }
             });
+            return param;
         }
-        return null;
+        return this.generateValues([generator], key, isArray);
+    };
+    FileGeneratorService.prototype.extractPreferredValueListMark = function (marks) {
+        if (!marks) {
+            return [];
+        }
+        var valueMarks = marks.find(function (mark) { return typeof mark === 'string' && mark.includes('@values'); });
+        if (valueMarks) {
+            var arr = valueMarks.replace(/@values\[|\]|'|"|;/gu, '').split(',');
+            return arr.map(function (item) { return (typeof item === 'string' ? item.trim() : item); });
+        }
+        return [];
+    };
+    FileGeneratorService.getRandomValueFromList = function (itemList) {
+        if (!itemList) {
+            return '';
+        }
+        var randomInd = utils_1.getRandomInt(0, itemList.length);
+        return itemList[randomInd];
+    };
+    FileGeneratorService.prototype.isFullNameOrGender = function (key) {
+        return key === 'firstName' || key === 'lastName' || key === 'middleName' || key === 'gender';
+    };
+    FileGeneratorService.prototype.getFullNameAndGender = function (generatorFunc) {
+        var result = {};
+        var _a = __read(generatorFunc(), 3), lastName = _a[0], firstName = _a[1], middleName = _a[2];
+        var gender = new name_generator_1.NameGenerator().isMale(firstName) ? 'Мужской' : 'Женский';
+        Object.assign(result, { firstName: firstName });
+        Object.assign(result, { lastName: lastName });
+        Object.assign(result, { middleName: middleName });
+        Object.assign(result, { gender: gender });
+        return result;
+    };
+    FileGeneratorService.prototype.getTypeDefinitionFromArrayOrGenerics = function (typeDefinition) {
+        if (Array.isArray(typeDefinition) && !this.isTuple(typeDefinition) || FileGeneratorService.isCustomTypeArray(typeDefinition)) {
+            return [this.getModelFormArray(typeDefinition), true];
+        }
+        return [typeDefinition, false];
+    };
+    FileGeneratorService.prototype.isTuple = function (value) {
+        return Array.isArray(value) && value.length > 1 && !(value[0] instanceof Object);
     };
     FileGeneratorService.prototype.findGeneralEntry = function (modelEntries) {
         var result = null;
@@ -401,32 +517,20 @@ var FileGeneratorService = (function () {
         }
         return [value, null];
     };
-    FileGeneratorService.prototype.isEntryPresentedAsSetOfProperties = function (key, value) {
-        return Array.isArray(value) && !this._helper.has(key);
-    };
     FileGeneratorService.getLoopCount = function (generatedHelper) {
         return generatedHelper && (generatedHelper === null || generatedHelper === void 0 ? void 0 : generatedHelper.length) ? Object.values(generatedHelper).length : 10;
     };
     FileGeneratorService.prototype.generateArrayFromHelper = function (key) {
         var generatedHelper = this._helper.get(key);
+        if (generatedHelper && !Array.isArray(generatedHelper)) {
+            generatedHelper = Object.values(generatedHelper);
+        }
         var countOfItems = utils_1.getRandomInt(1, generatedHelper.length);
         var itemList = [];
         for (var n = 0; n <= countOfItems; n++) {
             var rand = utils_1.getRandomInt(1, generatedHelper.length);
             if (!itemList.includes(generatedHelper[rand])) {
                 itemList.push(generatedHelper[rand]);
-            }
-        }
-        return itemList;
-    };
-    FileGeneratorService.prototype.generateArrayFromType = function (type) {
-        var itemList = [];
-        var values = this._helper.get(type);
-        var countOfItems = utils_1.getRandomInt(1, values.length);
-        for (var n = 0; n <= countOfItems; n++) {
-            var rand = utils_1.getRandomInt(0, values.length - 1);
-            if (!itemList.includes(values[rand])) {
-                itemList.push(values[rand]);
             }
         }
         return itemList;

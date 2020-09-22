@@ -91,7 +91,7 @@ router.get('/generate/customerList', function (req, res, next) {
         birthday: 'string',
         gender: 'string',
         tags: 'TagModel[]',
-        maritalStatus: 'string',
+        maritalStatus: 'string          //@values[\'Холост\', \'Женат/Замужем\'];',
         contact: 'ContactModel',
         address: {
             registration: 'AddressModel',
@@ -122,6 +122,7 @@ router.get('/generate/customerList', function (req, res, next) {
         genericType: 'Array<number>',
         genericCustomType: 'Array<AllergyModel>',
         tupleType: ['number', 'string'],
+        tupleTypeArray: [['number', 'string']],
         medicalCard: {
             bloodType: 'BloodTypeModel',
             chronicDiseaseList: 'ChronicDiseaseModel[]',
@@ -137,6 +138,42 @@ router.get('/generate/customerList', function (req, res, next) {
     };
     var contactList = fileGeneratorService.generateMockFormObjectModel(model);
     fileGeneratorService.generateOutputFile('customerList.json', JSON.stringify(contactList, null, 2))
+        .then(function (result) { return res.send([
+        result,
+        JSON.stringify({ helper: __spread(fileGeneratorService.helper) }, null, 2)
+    ]); })
+        .catch(function (err) { return res.send('error at fileGeneratorService.generateOutputFile\n' + err); });
+});
+router.get('/generate/employeeList', function (req, res, next) {
+    var model = {
+        id: 'number',
+        photo: 'string',
+        firstName: 'string',
+        middleName: 'string',
+        lastName: 'string',
+        birthday: 'string',
+        gender: 'string',
+        tags: 'TagModel[]',
+        maritalStatus: 'string          //@values[\'Холост\', \'Женат/Замужем\'];',
+        contact: 'ContactModel',
+        address: {
+            registration: 'AddressModel',
+            actual: 'AddressModel',
+        },
+        position: 'string   //@values["Врач", "Главрач", "Ассистент Врача", "Менеджер", "Кладовщик"];',
+        permissionList: 'PermissionModel[]',
+        department: {
+            name: 'string   //@values["Зубодробители", "Челюстные Копатели", "Дыробурильщики"];',
+            address: 'AddressModel',
+        },
+        skills: {
+            academicDegree: 'string[]   //@values["Доцент", "Бакалавр", "Магистр"];',
+            qualification: 'string',
+            category: 'string'
+        }
+    };
+    var employeeList = fileGeneratorService.generateMockFormObjectModel(model);
+    fileGeneratorService.generateOutputFile('employeeList.json', JSON.stringify(employeeList, null, 2))
         .then(function (result) { return res.send([
         result,
         JSON.stringify({ helper: __spread(fileGeneratorService.helper) }, null, 2)

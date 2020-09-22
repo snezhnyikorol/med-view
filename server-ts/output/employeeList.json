@@ -1,0 +1,158 @@
+[
+  {
+    "id": 0,
+    "photo": "data:image/png;base64,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",
+    "firstName": "Петр",
+    "lastName": "Николаев",
+    "middleName": "Аркадьевич",
+    "gender": "Мужской",
+    "birthday": "1970-01-01T00:00:01.979Z",
+    "tags": [
+      {
+        "id": 7,
+        "name": "Главрач"
+      },
+      {
+        "id": 1,
+        "name": "Кладовщик"
+      },
+      {
+        "id": 3,
+        "name": "Кандидат Наук"
+      }
+    ],
+    "maritalStatus": "Холост",
+    "contact": {
+      "phone": [
+        "+375444279003",
+        "+375292232761",
+        "+375298971358"
+      ],
+      "email": [],
+      "messengerList": [
+        {
+          "name": "Telegram",
+          "link": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut"
+        },
+        {
+          "name": "Telegram",
+          "link": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id"
+        },
+        {
+          "name": "Instagram",
+          "link": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut"
+        },
+        {
+          "name": "Instagram",
+          "link": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat"
+        }
+      ],
+      "mobile": [
+        {
+          "isMainPhone": false,
+          "phone": "+375443366822",
+          "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+        },
+        {
+          "isMainPhone": false,
+          "phone": "+375441733128",
+          "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+        },
+        {
+          "isMainPhone": false,
+          "phone": "+375252364310",
+          "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        },
+        {
+          "isMainPhone": false,
+          "phone": "+375445881789",
+          "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
+        },
+        {
+          "isMainPhone": false,
+          "phone": "+375258159229",
+          "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia"
+        },
+        {
+          "isMainPhone": false,
+          "phone": "+375444467853",
+          "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure"
+        },
+        {
+          "isMainPhone": false,
+          "phone": "+375251139122",
+          "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+        },
+        {
+          "isMainPhone": false,
+          "phone": "+375333325998",
+          "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui"
+        }
+      ]
+    },
+    "address": {
+      "registration": {
+        "houseNumber": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip",
+        "apartmentNumber": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore",
+        "locality": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute",
+        "country": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt",
+        "postIndex": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "region": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat",
+        "street": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea"
+      },
+      "actual": {
+        "houseNumber": "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
+        "apartmentNumber": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
+        "locality": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+        "country": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut",
+        "postIndex": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+        "region": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut",
+        "street": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"
+      }
+    },
+    "position": "Главрач",
+    "permissionList": [
+      {
+        "id": 8,
+        "name": "Методы Лечения"
+      },
+      {
+        "id": 4,
+        "name": "Лекарства"
+      },
+      {
+        "id": 9,
+        "name": "Пациенты"
+      },
+      {
+        "id": 5,
+        "name": "Лекарства"
+      },
+      {
+        "id": 7,
+        "name": "Прайсинг"
+      },
+      {
+        "id": 2,
+        "name": "Лекарства"
+      }
+    ],
+    "department": {
+      "name": "Дыробурильщики",
+      "address": {
+        "houseNumber": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit",
+        "apartmentNumber": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu",
+        "locality": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia",
+        "country": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",
+        "postIndex": "Lorem ipsum dolor sit amet,",
+        "region": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
+        "street": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      }
+    },
+    "skills": {
+      "academicDegree": [],
+      "qualification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
+      "category": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur"
+    }
+  }
+]

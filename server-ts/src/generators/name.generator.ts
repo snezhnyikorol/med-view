@@ -33,12 +33,24 @@ export class NameGenerator {
     return [
       this.lastNameList[getRandomInt(0, this.lastNameList.length)] + (this.isMale(personName) ? '' : 'а'),
       personName,
-      this.middleNameList[getRandomInt(0, this.middleNameList.length)] + (this.isMale(personName) ? '' : 'на')
+      this.middleNameList[getRandomInt(0, this.middleNameList.length)] + (this.isMale(personName) ? 'ич' : 'на')
     ]
   }
 
-  private isMale(firstName: string): boolean {
-    const lastChar = firstName.slice(-1)
-    return lastChar !== 'a' && lastChar !== 'я'
+  public getFirstName(): string {
+    return this.firstNameList[getRandomInt(0, this.firstNameList.length)];
+  }
+
+  public getLastName(firstName: string): string {
+    return this.lastNameList[getRandomInt(0, this.lastNameList.length)] + (this.isMale(firstName) ? '' : 'а')
+  }
+
+  public getMiddleName(firstName: string): string {
+    return this.middleNameList[getRandomInt(0, this.middleNameList.length)] + (this.isMale(firstName) ? 'ич' : 'на')
+  }
+
+  public isMale(firstName: string): boolean {
+    const lastChar = firstName.slice(-1);
+    return lastChar !== 'а' && lastChar !== 'я'
   }
 }

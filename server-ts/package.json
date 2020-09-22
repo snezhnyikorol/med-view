@@ -7,7 +7,7 @@
     "clean": "rmdir /s /q .\\dist",
     "copy-static": "xcopy .\\src\\static .\\dist\\static /e /i /h",
     "build": "npm-run-all clean tsc copy-static",
-    "tsc": "tsc",
+    "tsc": "tsc --build",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx src",
