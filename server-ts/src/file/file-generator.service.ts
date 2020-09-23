@@ -1,9 +1,10 @@
 import { BasicTypeArrayEnum } from './basic-type-array.enum';
 import fs from 'fs';
-import { LogColor, getRandomInt } from '../utils';
 import { NameGenerator } from '../generators/name.generator';
-import { PhoneGenerator } from '../generators/phone.generator';
+import { LogColor, getRandomInt } from '../utils';
 import { LoremGenerator } from '../generators/lorem.generator';
+import { PhoneGenerator } from '../generators/phone.generator';
+
 
 // eslint-disable-next-line no-shadow
 enum BasicTypeEnum {
@@ -231,7 +232,7 @@ export class FileGeneratorService {
                   const a = this.generateArrayFromHelper(key);
                   console.log(a);
                   const result = isArray ? a : a[getRandomInt(0, a.length)]
-                  Object.assign(param, {[key]: result});
+                  Object.assign(param, { [key]: result });
                 }
               }
               break;
@@ -253,7 +254,7 @@ export class FileGeneratorService {
    * @param {object} objectModel
    * @return {Array<*>|null} result
    */
-  public findGeneratedHelper(objectModel: object): Array<any>|null {
+  public findGeneratedHelper(objectModel: any): Array<any>|null {
     const keys = Object.keys(objectModel);
     const values = Object.values(objectModel);
     let helperName = null;
@@ -306,7 +307,7 @@ export class FileGeneratorService {
    * @param isArray
    */
   private getRandomizedNumberVariable(key: string, isArray: boolean, index: number): {[key:string]:number|number[]} {
-    return this.generateValues([() => key === 'id' ? index : getRandomInt(10000, 99999999)], key, isArray);
+    return this.generateValues([() => (key === 'id' ? index : getRandomInt(10000, 99999999))], key, isArray);
   }
 
   private getRandomizedBooleanVariable(key: string, isArray: boolean): {[key:string]:boolean|boolean[]} {
